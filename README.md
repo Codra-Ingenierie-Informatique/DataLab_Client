@@ -40,5 +40,5 @@ Copyrights and licensing:
 
 ### Dependencies and other installation methods
 
-See [Installation](https://datalab_client.readthedocs.io/en/latest/intro/installation.html)
+See [Installation](https://cdl_client.readthedocs.io/en/latest/installation.html)
 section in the documentation for more details.

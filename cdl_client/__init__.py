@@ -17,7 +17,7 @@ from cdl_client.baseproxy import BaseProxy
 from cdl_client.remote import CDLConnectionError, RemoteClient
 
 __version__ = "0.1.0"
-__docurl__ = "https://datalab_client.readthedocs.io/en/latest/"
+__docurl__ = "https://cdl_client.readthedocs.io/en/latest/"
 __homeurl__ = "https://codra-ingenierie-informatique.github.io/datalab_client/"
 __supporturl__ = (
     "https://github.com/Codra-Ingenierie-Informatique/datalab_client/issues/new/choose"
