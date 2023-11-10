@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Licensed under the terms of the BSD 3-Clause
-# (see cdl_client/LICENSE for details)
+# (see cdlclient/LICENSE for details)
 
 """
 DataLab Remote client unit test
@@ -23,7 +23,7 @@ import numpy as np
 from guidata.env import execenv
 from plotpy.builder import make
 
-from cdl_client.remote import RemoteClient
+from cdlclient.remote import SimpleRemoteProxy
 
 
 @contextmanager
@@ -39,7 +39,7 @@ def temporary_directory() -> Generator[str, None, None]:
             pass
 
 
-def multiple_commands(remote: RemoteClient):
+def multiple_commands(remote: SimpleRemoteProxy):
     """Execute multiple XML-RPC commands"""
     with temporary_directory() as tmpdir:
         x = np.linspace(-10, 10, 1000)
@@ -71,7 +71,7 @@ def multiple_commands(remote: RemoteClient):
 
 def test():
     """Remote client test"""
-    remote = RemoteClient()
+    remote = SimpleRemoteProxy()
     remote.connect()
     execenv.print("Executing multiple commands...", end="")
     multiple_commands(remote)

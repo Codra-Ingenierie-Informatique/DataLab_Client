@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 #
 # Licensed under the terms of the BSD 3-Clause
-# (see cdl_client/LICENSE for details)
+# (see cdlclient/LICENSE for details)
 
 """
-CDL_Client unit tests
+DataLab Simple Client unit tests
 """
 
 from __future__ import annotations
 
 from guidata.guitest import run_testlauncher
 
-import cdl_client
+import cdlclient
 
 
 def run() -> None:
     """Run DataLab test launcher"""
-    run_testlauncher(cdl_client)
+    run_testlauncher(cdlclient)
 
 
 if __name__ == "__main__":

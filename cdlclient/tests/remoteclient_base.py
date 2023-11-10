@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Licensed under the terms of the BSD 3-Clause
-# (see cdl_client/LICENSE for details)
+# (see cdlclient/LICENSE for details)
 
 """
 DataLab Remote client test base classes

@@ -7,17 +7,17 @@ import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 
-import cdl_client  # noqa: E402
+import cdlclient  # noqa: E402
 
 os.environ["CDL_DOC"] = "1"
 
 # -- Project information -----------------------------------------------------
 
-project = "CDL_Client"
+project = "DataLab Simple Client"
 author = "Pierre Raybaut"
 copyright = "2023, Codra - " + author
 html_logo = latex_logo = "_static/DataLab-title.png"
-release = cdl_client.__version__
+release = cdlclient.__version__
 
 # -- General configuration ---------------------------------------------------
 

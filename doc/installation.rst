@@ -22,7 +22,7 @@ install DataLab on an existing Python distribution:
 
 .. code-block:: console
 
-    $ pip install --upgrade CDL_Client-1.0.0-py2.py3-none-any.whl
+    $ pip install --upgrade cdlclient-1.0.0-py2.py3-none-any.whl
 
 Source package:
 ^^^^^^^^^^^^^^^

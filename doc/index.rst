@@ -1,5 +1,5 @@
-DataLab Client User Guide
-=========================
+DataLab Simple Client User Guide
+================================
 
 DataLab is a **generic signal and image processing software**
 with unique features designed to meet industrial requirements.
@@ -9,9 +9,9 @@ the powerful `PlotPyStack`_ - mostly the `guidata`_ and `PlotPy`_ libraries).
 
 For more details, see DataLab `Documentation`_.
 
-DataLab Client (`cdl_client` package) is a Python library providing a proxy to
-DataLab server. It allows to use DataLab features from a remote computer, or
-from a third-party application.
+DataLab Simple Client (``cdlclient`` package) is a Python library providing a
+remote proxy to a DataLab application (server). It allows to use DataLab
+features from a remote computer, and/or from a third-party application.
 
 .. figure:: _static/plotpy-stack-powered.png
     :align: center
@@ -23,18 +23,16 @@ External resources:
         :widths: 20, 80
 
         * - `Home`_
-          - DataLab home page
+          - Project home page
         * - `PyPI`_
           - Python Package Index
-        * - `GitHub`_
-          - Bug reports and feature requests
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    installation
-   example
+   overview
    api
 
 Copyrights and licensing
@@ -47,8 +45,7 @@ Copyrights and licensing
 .. _guidata: https://pypi.python.org/pypi/guidata
 .. _PlotPy: https://pypi.python.org/pypi/PlotPy
 .. _PyPI: https://pypi.python.org/pypi/DataLab
-.. _Home: https://codra-ingenierie-informatique.github.io/DataLab/
-.. _Documentation: https://datalab.readthedocs.io/
-.. _GitHub: https://github.com/Codra-Ingenierie-Informatique/DataLab
+.. _Home: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/
+.. _Documentation: https://cdlclient.readthedocs.io/
 .. _Codra: https://codra.net/
-.. _BSD 3-Clause: https://github.com/Codra-Ingenierie-Informatique/DataLab/blob/master/LICENSE
+.. _BSD 3-Clause: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/master/LICENSE

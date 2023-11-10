@@ -11,9 +11,9 @@ without internet connection like the Debian package management infrastructure).
 
 from guidata.utils.genreqs import gen_module_req_rst  # noqa: E402
 
-import cdl_client
+import cdlclient
 
 if __name__ == "__main__":
     print("Updating requirements.rst file...", end=" ")
-    gen_module_req_rst(cdl_client, ["Python>=3.8"])
+    gen_module_req_rst(cdlclient, ["Python>=3.8"])
     print("done.")

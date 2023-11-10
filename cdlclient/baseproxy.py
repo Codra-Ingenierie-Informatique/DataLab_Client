@@ -1,29 +1,12 @@
 # -*- coding: utf-8 -*-
 #
 # Licensed under the terms of the BSD 3-Clause
-# (see cdl_client/LICENSE for details)
+# (see cdlclient/LICENSE for details)
 
 """
 DataLab base proxy module
 -------------------------
 """
-
-# How to add a new method to the proxy:
-# -------------------------------------
-#
-# 1.  Add the method to the AbstractCDLControl class, as an abstract method
-#
-# 2a. If the method requires any data conversion to get through the XML-RPC layer,
-#     implement the method in both CDLProxy and RemoteClient classes
-#
-# 2b. If the method does not require any data conversion, implement the method
-#     directly in the BaseProxy class, so that it is available to both CDLProxy
-#     and RemoteClient classes without any code duplication
-#
-# 3.  Implement the method in the CDLMainWindow class
-#
-# 4.  Implement the method in the RemoteServer class (it will be automatically
-#     registered as an XML-RPC method, like all methods of AbstractCDLControl)
 
 from __future__ import annotations
 
@@ -37,11 +20,14 @@ import numpy as np
 if TYPE_CHECKING:
     from cdl.core.gui.main import CDLMainWindow
 
-    from cdl_client.remote import ServerProxy
+    from cdlclient.remote import ServerProxy
 
 
-class AbstractCDLControl(abc.ABC):
-    """Abstract base class for controlling DataLab (main window or remote server)"""
+class SimpleAbstractCDLControl(abc.ABC):
+    """Simple abstract base class for controlling DataLab
+
+    This is a subset of DataLab's AbstractCDLControl, with only the methods that do not
+    require DataLab object model to be implemented."""
 
     @classmethod
     def get_public_methods(cls) -> list[str]:
@@ -329,17 +315,20 @@ class AbstractCDLControl(abc.ABC):
         raise AttributeError(f"DataLab has no compute function '{name}'")
 
 
-class BaseProxy(AbstractCDLControl, metaclass=abc.ABCMeta):
-    """Common base class for DataLab proxies
+class SimpleBaseProxy(SimpleAbstractCDLControl, metaclass=abc.ABCMeta):
+    """Simple common base class for DataLab proxies
+
+    This is a subset of DataLab's BaseProxy, with only the methods that do not require
+    DataLab object model to be implemented.
 
     Args:
-        cdl_client (CDLMainWindow | ServerProxy | None): CDLMainWindow instance or
+        cdlclient (CDLMainWindow | ServerProxy | None): CDLMainWindow instance or
             ServerProxy instance. If None, then the proxy implementation will
-            have to set it later (e.g. see RemoteClient).
+            have to set it later (e.g. see SimpleRemoteProxy).
     """
 
-    def __init__(self, cdl_client: CDLMainWindow | ServerProxy | None = None) -> None:
-        self._cdl = cdl_client
+    def __init__(self, cdlclient: CDLMainWindow | ServerProxy | None = None) -> None:
+        self._cdl = cdlclient
 
     def get_version(self) -> str:
         """Return DataLab version.

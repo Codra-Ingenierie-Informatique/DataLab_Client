@@ -4,11 +4,11 @@ Public API
 Remote client
 ^^^^^^^^^^^^^
 
-.. autoclass:: cdl_client.RemoteClient
+.. autoclass:: cdlclient.SimpleRemoteProxy
     :members:
 
 Base proxy
 ^^^^^^^^^^
 
-.. autoclass:: cdl_client.BaseProxy
+.. autoclass:: cdlclient.SimpleBaseProxy
     :members:

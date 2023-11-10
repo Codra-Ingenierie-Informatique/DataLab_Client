@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Licensed under the terms of the BSD 3-Clause
-# (see cdl_client/LICENSE for details)
+# (see cdlclient/LICENSE for details)
 
 """
 DataLab remote control
@@ -10,7 +10,8 @@ DataLab remote control
 This module provides utilities to control DataLab from a Python script (e.g. with
 Spyder) or from a Jupyter notebook.
 
-The :class:`RemoteClient` class provides the main interface to DataLab XML-RPC server.
+The :class:`SimpleRemoteProxy` class provides the main interface
+to DataLab XML-RPC server.
 """
 
 from __future__ import annotations
@@ -30,7 +31,7 @@ from guidata.dataset.io import JSONReader, JSONWriter
 from guidata.env import execenv
 from guidata.userconfig import get_config_basedir
 
-from cdl_client.baseproxy import BaseProxy
+from cdlclient.baseproxy import SimpleBaseProxy
 
 # pylint: disable=invalid-name  # Allows short reference names like x, y, ...
 # pylint: disable=duplicate-code
@@ -119,8 +120,8 @@ def json_to_dataset(param_data: list[str]) -> gds.DataSet:
 
 # === Python 2.7 client side:
 #
-# # See doc/remotecontrol_py27.py for an almost complete Python 2.7
-# # implementation of RemoteClient class
+# # See DataLab's doc/remotecontrol_py27.py for an almost complete Python 2.7
+# # implementation of SimpleRemoteProxy class
 #
 # import io
 # from xmlrpclib import ServerProxy, Binary
@@ -135,10 +136,6 @@ def json_to_dataset(param_data: list[str]) -> gds.DataSet:
 # s.add_image("toto", array_to_binary(data))
 
 
-class CDLConnectionError(Exception):
-    """Error when trying to connect to DataLab XML-RPC server"""
-
-
 def get_cdl_xmlrpc_port():
     """Return DataLab current XML-RPC port"""
     if sys.platform == "win32" and "HOME" in os.environ:
@@ -149,7 +146,7 @@ def get_cdl_xmlrpc_port():
     try:
         return ini.get("main", "rpc_server_port")
     except (cp.NoSectionError, cp.NoOptionError) as exc:
-        raise CDLConnectionError("DataLab has not yet been executed") from exc
+        raise ConnectionRefusedError("DataLab has not yet been executed") from exc
 
 
 def items_to_json(items: list) -> str | None:
@@ -170,16 +167,19 @@ def items_to_json(items: list) -> str | None:
     return None
 
 
-class RemoteClient(BaseProxy):
+class SimpleRemoteProxy(SimpleBaseProxy):
     """Object representing a proxy/client to DataLab XML-RPC server.
     This object is used to call DataLab functions from a Python script.
 
+    This is a subset of DataLab's `RemoteClient` class, with only the methods
+    that do not require DataLab object model to be implemented.
+
     Examples:
-        Here is a simple example of how to use RemoteClient in a Python script
+        Here is a simple example of how to use SimpleRemoteProxy in a Python script
         or in a Jupyter notebook:
 
-        >>> from cdl_client.remotecontrol import RemoteClient
-        >>> proxy = RemoteClient()
+        >>> from cdlclient import SimpleRemoteProxy
+        >>> proxy = SimpleRemoteProxy()
         >>> proxy.connect()
         Connecting to DataLab XML-RPC server...OK (port: 28867)
         >>> proxy.get_version()
@@ -189,9 +189,9 @@ class RemoteClient(BaseProxy):
         >>> proxy.get_object_titles()
         ['toto']
         >>> proxy.get_object_from_title("toto")
-        <cdl_client.model.signal.SignalObj at 0x7f7f1c0b4a90>
+        <cdlclient.model.signal.SignalObj at 0x7f7f1c0b4a90>
         >>> proxy.get_object(0)
-        <cdl_client.model.signal.SignalObj at 0x7f7f1c0b4a90>
+        <cdlclient.model.signal.SignalObj at 0x7f7f1c0b4a90>
         >>> proxy.get_object(0).data
         array([1., 2., 3.])
     """
@@ -209,7 +209,7 @@ class RemoteClient(BaseProxy):
                 the port is automatically retrieved from DataLab configuration.
 
         Raises:
-            CDLConnectionError: DataLab is currently not running
+            ConnectionRefusedError: DataLab is currently not running
         """
         if port is None:
             port = get_xmlrpcport_from_env()
@@ -220,7 +220,7 @@ class RemoteClient(BaseProxy):
         try:
             self.get_version()
         except ConnectionRefusedError as exc:
-            raise CDLConnectionError("DataLab is currently not running") from exc
+            raise ConnectionRefusedError("DataLab is currently not running") from exc
 
     def connect(
         self,
@@ -237,7 +237,7 @@ class RemoteClient(BaseProxy):
             retries (int | None): Number of retries. Defaults to 10.
 
         Raises:
-            CDLConnectionError: Unable to connect to DataLab
+            ConnectionRefusedError: Unable to connect to DataLab
             ValueError: Invalid timeout (must be >= 0.0)
             ValueError: Invalid number of retries (must be >= 1)
         """
@@ -252,11 +252,11 @@ class RemoteClient(BaseProxy):
             try:
                 self.__connect_to_server(port=port)
                 break
-            except CDLConnectionError:
+            except ConnectionRefusedError:
                 time.sleep(timeout / retries)
         else:
             execenv.print("KO")
-            raise CDLConnectionError("Unable to connect to DataLab")
+            raise ConnectionRefusedError("Unable to connect to DataLab")
         execenv.print(f"OK (port: {self.port})")
 
     def disconnect(self) -> None:

@@ -1,4 +1,4 @@
-The :mod:`cdl_client` package requires the following Python modules:
+The :mod:`cdlclient` package requires the following Python modules:
 
 .. list-table::
     :header-rows: 1
@@ -57,3 +57,22 @@ Optional modules for building the documentation:
     * - pydata-sphinx-theme
       - 
       - Bootstrap-based Sphinx theme from the PyData community
+
+Optional modules for running test suite:
+
+.. list-table::
+    :header-rows: 1
+    :align: left
+
+    * - Name
+      - Version
+      - Summary
+    * - PyQt5
+      - 
+      - Python bindings for the Qt cross platform application toolkit
+    * - QtPy
+      - 
+      - Provides an abstraction layer on top of the various Qt bindings (PyQt5/6 and PySide2/6).
+    * - plotpy
+      - 
+      - Curve and image plotting tools for Python/Qt applications

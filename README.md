@@ -1,11 +1,11 @@
-## DataLab Client
+## DataLab Simple Client
 
-![DataLab](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/DataLab_Client/main/doc/images/DataLab-banner.png)
+![DataLab](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/main/doc/images/DataLab-banner.png)
 
-[![license](https://img.shields.io/pypi/l/CDL_Client.svg)](./LICENSE)
-[![pypi version](https://img.shields.io/pypi/v/CDL_Client.svg)](https://pypi.org/project/CDL_Client/)
-[![PyPI status](https://img.shields.io/pypi/status/CDL_Client.svg)](https://github.com/Codra-Ingenierie-Informatique/DataLab_Client)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/CDL_Client.svg)](https://pypi.python.org/pypi/CDL_Client/)
+[![license](https://img.shields.io/pypi/l/cdlclient.svg)](./LICENSE)
+[![pypi version](https://img.shields.io/pypi/v/cdlclient.svg)](https://pypi.org/project/cdlclient/)
+[![PyPI status](https://img.shields.io/pypi/status/cdlclient.svg)](https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/cdlclient.svg)](https://pypi.python.org/pypi/cdlclient/)
 
 ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by DataLab open-source project team.
 
@@ -25,11 +25,11 @@ libraries (such as NumPy, SciPy or scikit-image) and Qt graphical user interface
 
 DataLab is available as a **stand-alone** application (see for example our all-in-one Windows installer) or as an **addon to your Python-Qt application** thanks to advanced automation and embedding features.
 
-## About the client
+## About this package
 
-This repository contains the DataLab client, which is a Python package that can be used to interact with a DataLab server.
+DataLab Simple Client is a Python library that can be used to interact with a DataLab application (server).
 
-This allows to run computations on a remote server, or/and to control the DataLab GUI from a third-party application.
+This allows to control DataLab application from a remote computer, or/and from a third-party application.
 
 ### Credits
 
@@ -40,5 +40,5 @@ Copyrights and licensing:
 
 ### Dependencies and other installation methods
 
-See [Installation](https://cdl_client.readthedocs.io/en/latest/installation.html)
+See [Installation](https://cdlclient.readthedocs.io/en/latest/installation.html)
 section in the documentation for more details.

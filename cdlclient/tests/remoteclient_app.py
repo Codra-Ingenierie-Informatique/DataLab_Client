@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Licensed under the terms of the BSD 3-Clause
-# (see cdl_client/LICENSE for details)
+# (see cdlclient/LICENSE for details)
 
 """
 DataLab Remote client application test
@@ -24,9 +24,9 @@ from guidata.qthelpers import qt_app_context, qt_wait, win32_fix_title_bar_backg
 from qtpy import QtCore as QC
 from qtpy import QtWidgets as QW
 
-from cdl_client import CDLConnectionError, RemoteClient
-from cdl_client.tests.remoteclient_base import AbstractClientWindow
-from cdl_client.tests.remoteclient_unit import multiple_commands
+from cdlclient import SimpleRemoteProxy
+from cdlclient.tests.remoteclient_base import AbstractClientWindow
+from cdlclient.tests.remoteclient_unit import multiple_commands
 
 APP_NAME = "Remote client test"
 
@@ -71,7 +71,7 @@ class DataLabConnectionThread(QC.QThread):
         try:
             self.connect_callback()
             self.SIG_CONNECTION_OK.emit()
-        except CDLConnectionError:
+        except ConnectionRefusedError:
             self.SIG_CONNECTION_KO.emit()
 
 
@@ -147,7 +147,7 @@ class HostWindow(AbstractClientWindow):
     def init_cdl(self):
         """Open DataLab test"""
         if self.cdl is None:
-            self.cdl: RemoteClient = RemoteClient()
+            self.cdl: SimpleRemoteProxy = SimpleRemoteProxy()
             connect_dlg = DataLabConnectionDialog(self.cdl.connect, self)
             connect_dlg.host_label.setText("Host: DataLab server")
             ok = connect_dlg.exec()

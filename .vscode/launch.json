@@ -8,7 +8,7 @@
             "name": "Run Test Launcher",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/cdl_client/tests/__init__.py",
+            "program": "${workspaceFolder}/cdlclient/tests/__init__.py",
             "console": "integratedTerminal",
             "envFile": "${workspaceFolder}/.env",
             "python": "${config:python.defaultInterpreterPath}",
