@@ -1,6 +1,6 @@
 ## DataLab Client
 
-![DataLab](./doc/images/DataLab-banner.png)
+![DataLab](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/DataLab_Client/main/doc/images/DataLab-banner.png)
 
 [![license](https://img.shields.io/pypi/l/CDL_Client.svg)](./LICENSE)
 [![pypi version](https://img.shields.io/pypi/v/CDL_Client.svg)](https://pypi.org/project/CDL_Client/)
