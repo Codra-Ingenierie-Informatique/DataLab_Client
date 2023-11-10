@@ -19,6 +19,4 @@ from cdlclient.remote import SimpleRemoteProxy
 __version__ = "0.1.0"
 __docurl__ = "https://cdlclient.readthedocs.io/en/latest/"
 __homeurl__ = "https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/"
-__supporturl__ = (
-    "https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/issues/new/choose"
-)
+__supporturl__ = "https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/issues/new/choose"
