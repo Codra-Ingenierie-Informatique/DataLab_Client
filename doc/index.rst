@@ -46,6 +46,6 @@ Copyrights and licensing
 .. _PlotPy: https://pypi.python.org/pypi/PlotPy
 .. _PyPI: https://pypi.python.org/pypi/DataLab
 .. _Home: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/
-.. _Documentation: https://datalab.readthedocs.io/
+.. _Documentation: https://cdlapp.readthedocs.io/
 .. _Codra: https://codra.net/
 .. _BSD 3-Clause: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/master/LICENSE

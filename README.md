@@ -15,7 +15,7 @@
 
 ----
 
-## Overview
+## About DataLab
 
 DataLab is a generic signal and image processing software based on Python scientific
 libraries (such as NumPy, SciPy or scikit-image) and Qt graphical user interfaces
@@ -28,17 +28,18 @@ DataLab is available as a **stand-alone** application (see for example our all-i
 ## About this package
 
 DataLab Simple Client is a Python library that can be used to interact with a DataLab application (server).
-
 This allows to control DataLab application from a remote computer, or/and from a third-party application.
 
-### Credits
+See [documentation](https://cdlclient.readthedocs.io/en/latest/) for more details on
+the library and [changelog](https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/main/CHANGELOG.md)
+for recent history of changes.
 
 Copyrights and licensing:
 
 * Copyright © 2023 [Codra](https://codra.net/), [Pierre Raybaut](https://github.com/PierreRaybaut).
 * Licensed under the terms of the BSD 3-Clause (see [LICENSE](LICENSE)).
 
-### Dependencies and other installation methods
+## Dependencies and other installation methods
 
 See [Installation](https://cdlclient.readthedocs.io/en/latest/installation.html)
 section in the documentation for more details.
