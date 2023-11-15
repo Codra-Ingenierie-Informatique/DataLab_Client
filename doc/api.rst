@@ -12,3 +12,19 @@ Base proxy
 
 .. autoclass:: cdlclient.SimpleBaseProxy
     :members:
+
+Simple model
+^^^^^^^^^^^^
+
+DataLab Simple Client provides a simple model for accessing the DataLab
+objects.
+
+.. warning::
+
+    This model is not complete and does not cover all the DataLab features.
+
+.. autoclass:: cdlclient.simplemodel.SignalObj
+    :members:
+
+.. autoclass:: cdlclient.simplemodel.ImageObj
+    :members:

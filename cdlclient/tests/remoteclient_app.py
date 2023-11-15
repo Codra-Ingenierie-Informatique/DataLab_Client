@@ -175,6 +175,7 @@ class HostWindow(AbstractClientWindow):
         add_btn("Execute multiple commands", self.exec_multiple_cmd, 10)
         add_btn("Get object titles", self.get_object_titles, 10)
         add_btn("Get object uuids", self.get_object_uuids, 10)
+        add_btn("Get object", self.get_object)
 
     @try_send_command()
     def exec_multiple_cmd(self):
@@ -207,6 +208,18 @@ class HostWindow(AbstractClientWindow):
                     self.host.log(f"  {uuid}")
             else:
                 self.host.log("  Empty.")
+
+    @try_send_command()
+    def get_object(self):
+        """Get object (signal/image) at index for current panel"""
+        if self.cdl is not None:
+            titles = self.cdl.get_object_titles()
+            if titles:
+                obj = self.cdl.get_object()
+                self.host.log(f"Object '{obj.title}'")
+                self.host.log(str(obj))
+            else:
+                self.host.log("🏴‍☠️ Object list is empty!")
 
     def add_signals(self):
         """Add signals to DataLab"""
@@ -266,6 +279,9 @@ def test_remote_client():
                 window.get_object_titles()
             with qt_wait_print(dt, "Getting object uuids"):
                 window.get_object_uuids()
+            with qt_wait_print(dt, "Getting object"):
+                window.cdl.select_objects([0])
+                window.get_object()
             with qt_wait_print(dt, "Adding signals"):
                 window.add_signals()
             with qt_wait_print(dt, "Adding images"):
