@@ -1,5 +1,20 @@
 # DataLab Simple Client Releases #
 
+## Version 0.2.0 ##
+
+Changes:
+
+* Remote API:
+  * New `raise_window` method
+  * New `get_object_shapes` method
+  * New `get_object` method
+  * New `get_object_from_uuid` method
+  * New `get_object_from_title` method
+
+* Added simplified DataLab object model:
+  * `simplemodel.SignalObj` class
+  * `simplemodel.ImageObj` class
+
 ## Version 0.1.0 ##
 
 First release of the DataLab Simple Client.
