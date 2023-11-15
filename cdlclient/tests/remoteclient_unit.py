@@ -49,8 +49,12 @@ def multiple_commands(remote: SimpleRemoteProxy):
         z = np.random.rand(200, 200)
         remote.add_image("toto", z)
         rect = make.annotated_rectangle(100, 100, 200, 200, title="Test")
+        area = rect.get_rect()
         remote.add_annotations_from_items([rect])
         uuid = remote.get_sel_object_uuids()[0]
+        items = remote.get_object_shapes()
+        assert len(items) == 1 and items[0].get_rect() == area
+        execenv.print("OK")
         remote.add_label_with_title(f"Image uuid: {uuid}")
         remote.select_groups([0])
         remote.select_objects([uuid])

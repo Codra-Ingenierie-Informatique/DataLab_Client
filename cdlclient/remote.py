@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import configparser as cp
 import importlib
+import json
 import os
 import os.path as osp
 import sys
@@ -165,6 +166,27 @@ def items_to_json(items: list) -> str | None:
         save_items(writer, items)
         return writer.get_json(indent=4)
     return None
+
+
+def json_to_items(json_str: str | None) -> list:
+    """Convert JSON string to plot items.
+
+    Args:
+        json_str (str): JSON string or None
+
+    Returns:
+        list: list of plot items
+    """
+    from plotpy.io import load_items  # pylint: disable=import-outside-toplevel
+
+    items = []
+    if json_str:
+        try:
+            for item in load_items(JSONReader(json_str)):
+                items.append(item)
+        except json.decoder.JSONDecodeError:
+            pass
+    return items
 
 
 class SimpleRemoteProxy(SimpleBaseProxy):
@@ -354,6 +376,29 @@ class SimpleRemoteProxy(SimpleBaseProxy):
         if param is None:
             return self._cdl.calc(name)
         return self._cdl.calc(name, dataset_to_json(param))
+
+    def get_object_shapes(
+        self,
+        index: int | None = None,
+        group_index: int | None = None,
+        panel: str | None = None,
+    ) -> list:
+        """Get plot item shapes associated to object (signal/image).
+
+        Args:
+            index: Object index in current panel. Defaults to None.
+            group_index: Group index. Defaults to None.
+            panel: Panel name. Defaults to None.
+
+        If ``index`` is not specified, returns the currently selected object.
+        If ``group_index`` is not specified, return an object from the current group.
+        If ``panel`` is not specified, return an object from the current panel.
+
+        Returns:
+            List of plot item shapes
+        """
+        items_json = self._cdl.get_object_shapes(index, group_index, panel)
+        return json_to_items(items_json)
 
     def add_annotations_from_items(
         self, items: list, refresh_plot: bool = True, panel: str | None = None
