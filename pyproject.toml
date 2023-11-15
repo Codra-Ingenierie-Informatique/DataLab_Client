@@ -30,6 +30,10 @@ requires-python = ">=3.8, <4"
 dependencies = ["NumPy >= 1.21", "guidata >= 3.1"]
 dynamic = ["version"]
 
+[project.urls]
+Homepage = "https://codra-ingenierie-informatique.github.io/DataLabSimpleClient/"
+Documentation = "https://cdlclient.readthedocs.io/en/latest/"
+
 [project.gui-scripts]
 cdlclient-tests = "cdlclient.tests:run"
 
