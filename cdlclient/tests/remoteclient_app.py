@@ -260,6 +260,8 @@ def test_remote_client():
             window.init_cdl()
             with qt_wait_print(dt, "Executing multiple commands"):
                 window.exec_multiple_cmd()
+            with qt_wait_print(dt, "Raising DataLab window"):
+                window.raise_cdl()
             with qt_wait_print(dt, "Getting object titles"):
                 window.get_object_titles()
             with qt_wait_print(dt, "Getting object uuids"):

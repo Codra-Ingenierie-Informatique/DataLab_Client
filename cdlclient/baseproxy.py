@@ -55,6 +55,10 @@ class SimpleAbstractCDLControl(abc.ABC):
         """Close DataLab application"""
 
     @abc.abstractmethod
+    def raise_window(self) -> None:
+        """Raise DataLab window"""
+
+    @abc.abstractmethod
     def switch_to_panel(self, panel: str) -> None:
         """Switch to panel.
 
@@ -341,6 +345,10 @@ class SimpleBaseProxy(SimpleAbstractCDLControl, metaclass=abc.ABCMeta):
     def close_application(self) -> None:
         """Close DataLab application"""
         self._cdl.close_application()
+
+    def raise_window(self) -> None:
+        """Raise DataLab window"""
+        self._cdl.raise_window()
 
     def switch_to_panel(self, panel: str) -> None:
         """Switch to panel.

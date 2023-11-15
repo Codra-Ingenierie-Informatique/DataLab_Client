@@ -31,6 +31,7 @@
                 "--unattended",
             ],
             "env": {
+                "GUIDATA_PARSE_ARGS": "1",
                 // "DEBUG": "1",
                 // "LANG": "fr",
                 "QT_COLOR_MODE": "light",

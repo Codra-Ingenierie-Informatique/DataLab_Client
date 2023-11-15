@@ -110,6 +110,7 @@ class AbstractClientWindow(QW.QMainWindow, metaclass=AbstractClientWindowMeta):
         self.host.add_label(self.PURPOSE)
         add_btn = self.host.add_button
         add_btn(self.INIT_BUTTON_LABEL, self.init_cdl, 10, "DialogApplyButton")
+        add_btn("Raise window", self.raise_cdl, 0, "FileDialogToParent")
         self.add_additional_buttons()
         add_btn("Add signal objects", self.add_signals, 10, "CommandLink")
         add_btn("Add image objects", self.add_images, 0, "CommandLink")
@@ -122,6 +123,12 @@ class AbstractClientWindow(QW.QMainWindow, metaclass=AbstractClientWindowMeta):
     @abc.abstractmethod
     def init_cdl(self):
         """Open DataLab test"""
+
+    def raise_cdl(self):
+        """Raise DataLab window"""
+        if self.cdl is not None:
+            self.cdl.raise_window()
+            self.host.log("=> Raised DataLab window")
 
     @abc.abstractmethod
     def close_cdl(self):
