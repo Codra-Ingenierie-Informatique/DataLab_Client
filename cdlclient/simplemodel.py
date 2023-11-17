@@ -57,6 +57,8 @@ class BaseObj:
 class SignalObj(gds.DataSet, BaseObj):
     """Signal object (simplified version of DataLab's Signal object)"""
 
+    uuid = gds.StringItem("UUID").set_prop("display", hide=True)
+
     _tabs = gds.BeginTabGroup("all")
 
     _datag = gds.BeginGroup("Data and metadata")
@@ -84,6 +86,8 @@ class SignalObj(gds.DataSet, BaseObj):
 
 class ImageObj(gds.DataSet, BaseObj):
     """Image object (simplified version of DataLab's Image object)"""
+
+    uuid = gds.StringItem("UUID").set_prop("display", hide=True)
 
     _tabs = gds.BeginTabGroup("all")
 
