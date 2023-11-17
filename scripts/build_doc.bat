@@ -16,6 +16,8 @@ call %FUNC% GetVersion CDL_VERSION
 cd %SCRIPTPATH%\..
 %PYTHON% doc\update_requirements.py
 set PATH=C:\Program Files\HTML Help Workshop;C:\Program Files (x86)\HTML Help Workshop;%PATH%
-sphinx-build -b singlehtml doc build\doc
-start build\doc\index.html
+sphinx-build -b latex doc build\doc
+cd build\doc
+pdflatex %LIBNAME%.tex
+start %LIBNAME%.pdf
 call %FUNC% EndOfScript
