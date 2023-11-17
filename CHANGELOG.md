@@ -1,5 +1,14 @@
 # DataLab Simple Client Releases #
 
+## Version 0.3.0 ##
+
+Changes:
+
+* Remote API:
+  * `get_object` method now takes either object number, UUID or a title
+  * `get_object_shapes` method now takes either object number, UUID or a title
+  * Removed deprecated `get_object_from_uuid` and `get_object_from_title` methods
+
 ## Version 0.2.0 ##
 
 Changes:
