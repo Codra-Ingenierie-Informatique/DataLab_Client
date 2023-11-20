@@ -280,7 +280,7 @@ def test_remote_client():
             with qt_wait_print(dt, "Getting object uuids"):
                 window.get_object_uuids()
             with qt_wait_print(dt, "Getting object"):
-                window.cdl.select_objects([0])
+                window.cdl.select_objects([1])
                 window.get_object()
             with qt_wait_print(dt, "Adding signals"):
                 window.add_signals()
