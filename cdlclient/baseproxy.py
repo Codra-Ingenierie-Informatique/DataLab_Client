@@ -18,9 +18,10 @@ import guidata.dataset as gds
 import numpy as np
 
 if TYPE_CHECKING:
-    from cdl.core.gui.main import CDLMainWindow
+    from collections.abc import Iterator
 
     from cdlclient.remote import ServerProxy
+    from cdlclient.simplemodel import ImageObj, SignalObj
 
 
 class SimpleAbstractCDLControl(abc.ABC):
@@ -28,6 +29,44 @@ class SimpleAbstractCDLControl(abc.ABC):
 
     This is a subset of DataLab's AbstractCDLControl, with only the methods that do not
     require DataLab object model to be implemented."""
+
+    def __len__(self) -> int:
+        """Return number of objects"""
+        return len(self.get_object_uuids())
+
+    def __getitem__(
+        self,
+        nb_id_title: int | str | None = None,
+    ) -> SignalObj | ImageObj:
+        """Return object"""
+        return self.get_object(nb_id_title)
+
+    def __iter__(self) -> Iterator[SignalObj | ImageObj]:
+        """Iterate over objects"""
+        uuids = self.get_object_uuids()
+        for uuid in uuids:
+            yield self.get_object(uuid)
+
+    def __repr__(self) -> str:
+        """Return object representation"""
+        return self.__str__()
+
+    def __str__(self) -> str:
+        """Return object string representation"""
+        titles = self.get_object_titles()
+        uuids = self.get_object_uuids()
+        text = f"{self.__class__.__name__} (DataLab instance, {len(titles)} items):\n"
+        for uuid, title in zip(uuids, titles):
+            text += f"  {uuid}: {title}\n"
+        return text
+
+    def __bool__(self) -> bool:
+        """Return True if model is not empty"""
+        return bool(self.get_object_uuids())
+
+    def __contains__(self, id_title: str) -> bool:
+        """Return True if object (UUID or title) is in model"""
+        return id_title in (self.get_object_titles() + self.get_object_uuids())
 
     @classmethod
     def get_public_methods(cls) -> list[str]:
@@ -237,6 +276,26 @@ class SimpleAbstractCDLControl(abc.ABC):
         """
 
     @abc.abstractmethod
+    def get_object(
+        self,
+        nb_id_title: int | str | None = None,
+        panel: str | None = None,
+    ) -> SignalObj | ImageObj:
+        """Get object (signal/image) from index.
+
+        Args:
+            nb_id_title: Object number, or object id, or object title.
+             Defaults to None (current object).
+            panel: Panel name. Defaults to None (current panel).
+
+        Returns:
+            Object
+
+        Raises:
+            KeyError: if object not found
+        """
+
+    @abc.abstractmethod
     def get_object_uuids(self, panel: str | None = None) -> list[str]:
         """Get object (signal/image) uuid list for current panel.
         Objects are sorted by group number and object index in group.
@@ -350,7 +409,7 @@ class SimpleBaseProxy(SimpleAbstractCDLControl, metaclass=abc.ABCMeta):
             have to set it later (e.g. see SimpleRemoteProxy).
     """
 
-    def __init__(self, cdlclient: CDLMainWindow | ServerProxy | None = None) -> None:
+    def __init__(self, cdlclient: ServerProxy | None = None) -> None:
         self._cdl = cdlclient
 
     def get_version(self) -> str:

@@ -1,5 +1,12 @@
 # DataLab Simple Client Releases #
 
+## Version 0.4.0 ##
+
+Changes:
+
+* Remote API:
+  * Added dict-like interface (e.g. `proxy['obj123']`)
+
 ## Version 0.3.0 ##
 
 Changes:
