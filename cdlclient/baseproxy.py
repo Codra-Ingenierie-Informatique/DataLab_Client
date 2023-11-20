@@ -98,7 +98,15 @@ class SimpleAbstractCDLControl(abc.ABC):
         """Raise DataLab window"""
 
     @abc.abstractmethod
-    def switch_to_panel(self, panel: str) -> None:
+    def get_current_panel(self) -> str:
+        """Return current panel name.
+
+        Returns:
+            str: Panel name (valid values: "signal", "image", "macro"))
+        """
+
+    @abc.abstractmethod
+    def set_current_panel(self, panel: str) -> None:
         """Switch to panel.
 
         Args:
@@ -428,13 +436,21 @@ class SimpleBaseProxy(SimpleAbstractCDLControl, metaclass=abc.ABCMeta):
         """Raise DataLab window"""
         self._cdl.raise_window()
 
-    def switch_to_panel(self, panel: str) -> None:
+    def get_current_panel(self) -> str:
+        """Return current panel name.
+
+        Returns:
+            str: Panel name (valid values: "signal", "image", "macro"))
+        """
+        return self._cdl.get_current_panel()
+
+    def set_current_panel(self, panel: str) -> None:
         """Switch to panel.
 
         Args:
             panel (str): Panel name (valid values: "signal", "image", "macro"))
         """
-        self._cdl.switch_to_panel(panel)
+        self._cdl.set_current_panel(panel)
 
     def reset_all(self) -> None:
         """Reset all application data"""
