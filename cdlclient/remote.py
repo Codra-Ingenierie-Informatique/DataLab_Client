@@ -215,11 +215,13 @@ class SimpleRemoteProxy(SimpleBaseProxy):
         True
         >>> proxy.get_object_titles()
         ['toto']
-        >>> proxy.get_object_from_title("toto")
+        >>> proxy["toto"]
         <cdlclient.model.signal.SignalObj at 0x7f7f1c0b4a90>
-        >>> proxy.get_object(1)
+        >>> "toto" in proxy
+        True
+        >>> proxy[1]
         <cdlclient.model.signal.SignalObj at 0x7f7f1c0b4a90>
-        >>> proxy.get_object(1).data
+        >>> proxy[1].data
         array([1., 2., 3.])
     """
 
