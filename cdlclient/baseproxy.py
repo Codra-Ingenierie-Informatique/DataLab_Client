@@ -47,15 +47,15 @@ class SimpleAbstractCDLControl(abc.ABC):
         for uuid in uuids:
             yield self.get_object(uuid)
 
-    def __repr__(self) -> str:
-        """Return object representation"""
-        return self.__str__()
-
     def __str__(self) -> str:
         """Return object string representation"""
+        return super().__repr__()
+
+    def __repr__(self) -> str:
+        """Return object representation"""
         titles = self.get_object_titles()
         uuids = self.get_object_uuids()
-        text = f"{self.__class__.__name__} (DataLab instance, {len(titles)} items):\n"
+        text = f"{str(self)} (DataLab, {len(titles)} items):\n"
         for uuid, title in zip(uuids, titles):
             text += f"  {uuid}: {title}\n"
         return text
@@ -249,12 +249,13 @@ class SimpleAbstractCDLControl(abc.ABC):
 
     @abc.abstractmethod
     def select_groups(
-        self, selection: list[int | str], panel: str | None = None
+        self, selection: list[int | str] | None = None, panel: str | None = None
     ) -> None:
         """Select groups in current panel.
 
         Args:
-            selection (list[int | str]): List of group numbers or uuids to select
+            selection: List of group numbers (1 to N), or list of group uuids,
+             or None to select all groups. Defaults to None.
             panel (str | None): panel name (valid values: "signal", "image").
                 If None, current panel is used. Defaults to None.
         """
@@ -525,12 +526,13 @@ class SimpleBaseProxy(SimpleAbstractCDLControl, metaclass=abc.ABCMeta):
         self._cdl.select_objects(selection, group_num, panel)
 
     def select_groups(
-        self, selection: list[int | str], panel: str | None = None
+        self, selection: list[int | str] | None = None, panel: str | None = None
     ) -> None:
         """Select groups in current panel.
 
         Args:
-            selection (list[int | str]): List of group numbers or uuids to select
+            selection: List of group numbers (1 to N), or list of group uuids,
+             or None to select all groups. Defaults to None.
             panel (str | None): panel name (valid values: "signal", "image").
                 If None, current panel is used. Defaults to None.
         """

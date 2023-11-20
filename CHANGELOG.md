@@ -8,6 +8,7 @@ Changes:
   * Added dict-like interface (e.g. `proxy['obj123']`)
   * Renamed `switch_to_panel` method to `set_current_panel` (compatibility with DataLab 0.9)
   * Added `get_current_panel` method
+  * Changed `select_groups` first argument `selection` (compatibility with DataLab 0.9)
 
 ## Version 0.3.0 ##
 
