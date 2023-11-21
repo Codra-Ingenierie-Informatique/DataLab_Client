@@ -294,6 +294,16 @@ class SimpleRemoteProxy(SimpleBaseProxy):
         # future, it may be useful to have a disconnect method.
         self._cdl = None
 
+    def is_connected(self) -> bool:
+        """Return True if connected to DataLab XML-RPC server."""
+        if self._cdl is not None:
+            try:
+                self.get_version()
+                return True
+            except ConnectionRefusedError:
+                self._cdl = None
+        return False
+
     def get_method_list(self) -> list[str]:
         """Return list of available methods."""
         return self._cdl.system.listMethods()
