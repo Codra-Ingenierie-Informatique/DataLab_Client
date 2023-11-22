@@ -200,6 +200,9 @@
                 "clear": true
             },
             "dependsOrder": "sequence",
+            "dependsOn": [
+                "Clean Up"
+            ]
         },
     ]
 }
