@@ -13,6 +13,10 @@ DataLab Simple Client (``cdlclient`` package) is a Python library providing a
 remote proxy to a DataLab application (server). It allows to use DataLab
 features from a remote computer, and/or from a third-party application.
 
+It also provides widgets to embed DataLab features in a Qt application
+(connection dialog, etc.). For this particular use case, the library relies
+on `QtPy`_.
+
 .. figure:: _static/plotpy-stack-powered.png
     :align: center
 
@@ -44,6 +48,7 @@ Copyrights and licensing
 .. _PlotPyStack: https://github.com/PlotPyStack
 .. _guidata: https://pypi.python.org/pypi/guidata
 .. _PlotPy: https://pypi.python.org/pypi/PlotPy
+.. _QtPy: https://pypi.python.org/pypi/QtPy
 .. _PyPI: https://pypi.python.org/pypi/DataLab
 .. _Home: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/
 .. _Documentation: https://cdlapp.readthedocs.io/

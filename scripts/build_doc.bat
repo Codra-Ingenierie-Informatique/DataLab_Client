@@ -18,6 +18,8 @@ cd %SCRIPTPATH%\..
 set PATH=C:\Program Files\HTML Help Workshop;C:\Program Files (x86)\HTML Help Workshop;%PATH%
 sphinx-build -b latex doc build\doc
 cd build\doc
-pdflatex %LIBNAME%.tex
+pdflatex -interaction=nonstopmode -quiet %LIBNAME%.tex
+@REM Build again to fix table of contents
+pdflatex -interaction=nonstopmode -quiet %LIBNAME%.tex
 start %LIBNAME%.pdf
 call %FUNC% EndOfScript

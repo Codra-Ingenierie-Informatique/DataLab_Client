@@ -43,7 +43,7 @@ class DataLabConnectionThread(QC.QThread):
             self.SIG_CONNECTION_KO.emit()
 
 
-class DataLabConnectionDialog(QW.QDialog):
+class ConnectionDialog(QW.QDialog):
     """DataLab Connection dialog
 
     Args:
@@ -125,5 +125,5 @@ if __name__ == "__main__":
         # raise ConnectionRefusedError("Connection refused")
 
     with qt_app_context():
-        dlg = DataLabConnectionDialog(fake_connect)
+        dlg = ConnectionDialog(fake_connect)
         dlg.exec()

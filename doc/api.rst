@@ -28,3 +28,9 @@ objects.
 
 .. autoclass:: cdlclient.simplemodel.ImageObj
     :members:
+
+Connection dialog
+^^^^^^^^^^^^^^^^^
+
+.. autoclass:: cdlclient.widgets.ConnectionDialog
+    :members:

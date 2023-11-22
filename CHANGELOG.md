@@ -8,9 +8,9 @@
   * Added `is_connected` method
 
 * New `widgets` module:
-  * New `DataLabConnectionDialog` class:
+  * New `ConnectionDialog` class:
     * Ready-to-use dialog box to connect to a DataLab server
-    * `from cdlclient.widgets import DataLabConnectionDialog`
+    * `from cdlclient.widgets import ConnectionDialog`
     * See example in `cdlclient/tests/connect_dialog.py`
 
 ## Version 0.4.0 ##

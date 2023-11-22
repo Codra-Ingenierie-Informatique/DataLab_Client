@@ -85,3 +85,19 @@ class (on the section "Remote control").
 .. _XML-RPC: https://docs.python.org/3/library/xmlrpc.html
 
 .. _Spyder: https://www.spyder-ide.org/
+
+
+Connection dialog
+^^^^^^^^^^^^^^^^^
+
+The DataLab Simple Client package provides a connection dialog that may be used
+to connect to a running DataLab instance. It is exposed by the
+:py:class:`cdlclient.widgets.ConnectionDialog` class.
+
+.. figure:: /images/shots/connect_dialog.png
+
+    Screenshot of connection dialog (``cdlclient.widgets.ConnectionDialog``)
+
+Example of use:
+
+.. literalinclude:: ../cdlclient/tests/connect_dialog.py

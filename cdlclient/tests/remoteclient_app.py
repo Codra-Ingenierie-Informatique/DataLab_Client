@@ -25,7 +25,7 @@ from qtpy import QtWidgets as QW
 from cdlclient import SimpleRemoteProxy
 from cdlclient.tests.remoteclient_base import AbstractClientWindow
 from cdlclient.tests.remoteclient_unit import multiple_commands
-from cdlclient.widgets import DataLabConnectionDialog
+from cdlclient.widgets import ConnectionDialog
 
 APP_NAME = "Remote client test"
 
@@ -73,7 +73,7 @@ class HostWindow(AbstractClientWindow):
         """Open DataLab test"""
         if self.cdl is None:
             self.cdl: SimpleRemoteProxy = SimpleRemoteProxy()
-            connect_dlg = DataLabConnectionDialog(self.cdl.connect, self)
+            connect_dlg = ConnectionDialog(self.cdl.connect, self)
             ok = connect_dlg.exec()
             if ok:
                 self.host.log("✨ Initialized DataLab connection ✨")
