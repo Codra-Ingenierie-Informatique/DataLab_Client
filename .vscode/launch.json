@@ -14,7 +14,6 @@
             "python": "${config:python.defaultInterpreterPath}",
             "justMyCode": true,
             "env": {
-                // "DEBUG": "1",
                 "QT_COLOR_MODE": "light",
             }
         },
@@ -27,14 +26,21 @@
             "envFile": "${workspaceFolder}/.env",
             "python": "${config:python.defaultInterpreterPath}",
             "justMyCode": false,
+        },
+        {
+            "name": "Run current file (unattended)",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "python": "${config:python.defaultInterpreterPath}",
+            "justMyCode": false,
             "args": [
                 "--unattended",
             ],
             "env": {
                 "GUIDATA_PARSE_ARGS": "1",
-                // "DEBUG": "1",
-                // "LANG": "fr",
-                "QT_COLOR_MODE": "light",
             }
         },
     ]
