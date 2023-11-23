@@ -34,3 +34,10 @@ Connection dialog
 
 .. autoclass:: cdlclient.widgets.ConnectionDialog
     :members:
+
+
+Get object dialog
+^^^^^^^^^^^^^^^^^
+
+.. autoclass:: cdlclient.widgets.GetObjectDialog
+    :members:

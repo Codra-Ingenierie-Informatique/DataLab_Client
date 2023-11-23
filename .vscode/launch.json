@@ -26,6 +26,9 @@
             "envFile": "${workspaceFolder}/.env",
             "python": "${config:python.defaultInterpreterPath}",
             "justMyCode": false,
+            "env": {
+                "QT_COLOR_MODE": "light",
+            }
         },
         {
             "name": "Run current file (unattended)",

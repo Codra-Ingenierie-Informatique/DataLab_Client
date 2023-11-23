@@ -1,5 +1,18 @@
 # DataLab Simple Client Releases #
 
+## Version 0.6.0 ##
+
+💥 Changes:
+
+* Remote API (`SimpleRemoteProxy`):
+  * Added `get_group_titles_with_object_infos` method
+
+* New `widgets` module:
+  * New `GetObjectDialog` class:
+    * Ready-to-use dialog box to retrieve an object from a DataLab server
+    * `from cdlclient.widgets import GetObjectDialog`
+    * See example in `cdlclient/tests/get_object_dialog.py`
+
 ## Version 0.5.0 ##
 
 💥 Changes:

@@ -25,7 +25,7 @@ from qtpy import QtWidgets as QW
 from cdlclient import SimpleRemoteProxy
 from cdlclient.tests.remoteclient_base import AbstractClientWindow
 from cdlclient.tests.remoteclient_unit import multiple_commands
-from cdlclient.widgets import ConnectionDialog
+from cdlclient.widgets import ConnectionDialog, GetObjectDialog
 
 APP_NAME = "Remote client test"
 
@@ -100,6 +100,7 @@ class HostWindow(AbstractClientWindow):
         add_btn("Get object titles", self.get_object_titles, 10)
         add_btn("Get object uuids", self.get_object_uuids, 10)
         add_btn("Get object", self.get_object)
+        add_btn("Get object using dialog box", self.get_object_dialog)
 
     @try_send_command()
     def exec_multiple_cmd(self):
@@ -144,6 +145,17 @@ class HostWindow(AbstractClientWindow):
                 self.host.log(str(obj))
             else:
                 self.host.log("🏴‍☠️ Object list is empty!")
+
+    @try_send_command()
+    def get_object_dialog(self):
+        """Get object (signal/image) using dialog box"""
+        if self.cdl is not None:
+            dialog = GetObjectDialog(self, "Get object from DataLab", self.cdl)
+            if dialog.exec():
+                uuid = dialog.get_current_object_uuid()
+                obj = self.cdl.get_object(uuid)
+                self.host.log(f"Object '{obj.title}'")
+                self.host.log(str(obj))
 
     def add_signals(self):
         """Add signals to DataLab"""

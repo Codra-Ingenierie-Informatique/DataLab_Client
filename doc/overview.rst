@@ -101,3 +101,19 @@ to connect to a running DataLab instance. It is exposed by the
 Example of use:
 
 .. literalinclude:: ../cdlclient/tests/connect_dialog.py
+
+
+Get object dialog
+^^^^^^^^^^^^^^^^^
+
+The DataLab Simple Client package provides a dialog that may be used to get
+an object from a running DataLab instance. It is exposed by the
+:py:class:`cdlclient.widgets.GetObjectDialog` class.
+
+.. figure:: /images/shots/get_object_dialog.png
+
+    Screenshot of get object dialog (``cdlclient.widgets.GetObjectDialog``)
+
+Example of use:
+
+.. literalinclude:: ../cdlclient/tests/get_object_dialog.py
