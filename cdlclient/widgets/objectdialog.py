@@ -25,8 +25,9 @@ from qtpy import QtCore as QC
 from qtpy import QtGui as QG
 from qtpy import QtWidgets as QW
 
-from cdlclient.widgets import svg_icons
-from cdlclient.widgets.qthelpers import block_signals, svgtext_to_icon
+from cdlclient.config import _
+from cdlclient.qthelpers import block_signals, svgtext_to_icon
+from cdlclient.widgets import datalab_banner, svg_icons
 
 if TYPE_CHECKING:  # pragma: no cover
     from cdlclient import SimpleRemoteProxy
@@ -164,27 +165,47 @@ class GetObjectDialog(QW.QDialog):
     def __init__(
         self,
         parent: QW.QWidget,
-        title: str,
         proxy: SimpleRemoteProxy,
+        title: str | None = None,
     ) -> None:
         super().__init__(parent)
         self.__proxy = proxy
         self.__current_object_uuid: str | None = None
-        self.setWindowTitle(title)
+        self.setWindowTitle(_("Select object") if title is None else title)
         vlayout = QW.QVBoxLayout()
         self.setLayout(vlayout)
 
+        logo_label = QW.QLabel()
+        pixmap = QG.QPixmap()
+        pixmap.loadFromData(QC.QByteArray.fromBase64(datalab_banner.DATA))
+        logo_label.setPixmap(pixmap)
+        logo_label.setAlignment(QC.Qt.AlignCenter)
+
+        panelgroup = QW.QWidget()
+        panellayout = QW.QHBoxLayout()
+        panellayout.setContentsMargins(0, 0, 0, 0)
+        # panellayout.setAlignment(QC.Qt.AlignCenter)
+        panelgroup.setLayout(panellayout)
+
         panelcombo = QW.QComboBox()
-        panelcombo.addItems(["Signals", "Images"])
+        panelcombo.addItem(svgtext_to_icon(svg_icons.SIGNAL), _("Signals"))
+        panelcombo.addItem(svgtext_to_icon(svg_icons.IMAGE), _("Images"))
         panelcombo.setCurrentIndex(0 if proxy.get_current_panel() == "signal" else 1)
         panelcombo.currentIndexChanged.connect(self.__change_panel)
+
+        panellabel = QW.QLabel(_("Active panel:"))
+        panellayout.addWidget(panellabel)
+        panellayout.addWidget(panelcombo)
+        panellayout.setStretch(1, 1)
 
         self.tree = SimpleObjectTree(parent)
         self.tree.init_from(proxy)
         self.tree.SIG_ITEM_DOUBLECLICKED.connect(lambda oid: self.accept())
         self.tree.itemSelectionChanged.connect(self.current_object_changed)
 
-        vlayout.addWidget(panelcombo)
+        vlayout.addWidget(logo_label)
+        vlayout.addSpacing(10)
+        vlayout.addWidget(panelgroup)
         vlayout.addWidget(self.tree)
 
         bbox = QW.QDialogButtonBox(QW.QDialogButtonBox.Ok | QW.QDialogButtonBox.Cancel)
@@ -209,5 +230,6 @@ class GetObjectDialog(QW.QDialog):
     def current_object_changed(self) -> None:
         """Item selection has changed"""
         self.__current_object_uuid = self.tree.get_current_item_id()
+        self.ok_btn.setEnabled(bool(self.__current_object_uuid))
         self.ok_btn.setEnabled(bool(self.__current_object_uuid))
         self.ok_btn.setEnabled(bool(self.__current_object_uuid))

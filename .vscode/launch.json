@@ -28,6 +28,7 @@
             "justMyCode": false,
             "env": {
                 "QT_COLOR_MODE": "light",
+                // "LANG": "fr",
             }
         },
         {

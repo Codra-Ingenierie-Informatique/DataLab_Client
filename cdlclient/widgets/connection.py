@@ -21,10 +21,11 @@ from qtpy import QtCore as QC
 from qtpy import QtGui as QG
 from qtpy import QtWidgets as QW
 
+from cdlclient.config import _
 from cdlclient.widgets import datalab_banner
 
 
-class DataLabConnectionThread(QC.QThread):
+class ConnectionThread(QC.QThread):
     """DataLab Connection thread"""
 
     SIG_CONNECTION_OK = QC.Signal()
@@ -54,7 +55,7 @@ class ConnectionDialog(QW.QDialog):
     def __init__(self, connect_callback: Callable, parent: QW.QWidget = None) -> None:
         super().__init__(parent)
         win32_fix_title_bar_background(self)
-        self.setWindowTitle("Connection to DataLab")
+        self.setWindowTitle(_("Connection to DataLab"))
         self.resize(300, 50)
         self.host_label = QW.QLabel()
         pixmap = QG.QPixmap()
@@ -66,7 +67,7 @@ class ConnectionDialog(QW.QDialog):
         status = QW.QWidget()
         status_layout = QW.QHBoxLayout()
         status.setLayout(status_layout)
-        self.status_label = QW.QLabel("Waiting for connection...")
+        self.status_label = QW.QLabel(_("Waiting for connection..."))
         self.status_icon = QW.QLabel()
         status_layout.addWidget(self.status_icon)
         status_layout.addWidget(self.status_label)
@@ -77,7 +78,7 @@ class ConnectionDialog(QW.QDialog):
         layout.addWidget(self.progress_bar)
         layout.addWidget(status)
         self.setLayout(layout)
-        self.thread = DataLabConnectionThread(connect_callback)
+        self.thread = ConnectionThread(connect_callback)
         self.thread.SIG_CONNECTION_OK.connect(self.on_connection_successful)
         self.thread.SIG_CONNECTION_KO.connect(self.on_connection_failed)
         button_box = QW.QDialogButtonBox(QW.QDialogButtonBox.Cancel)
@@ -97,7 +98,7 @@ class ConnectionDialog(QW.QDialog):
         """Connect to server"""
         self.progress_bar.setRange(0, 0)
         self.set_status_icon("BrowserReload")
-        self.status_label.setText("Connecting to server...")
+        self.status_label.setText(_("Connecting to server..."))
         self.thread.start()
 
     def on_connection_successful(self) -> None:
@@ -105,7 +106,7 @@ class ConnectionDialog(QW.QDialog):
         self.progress_bar.setRange(0, 1)
         self.progress_bar.setValue(1)
         self.set_status_icon("DialogApplyButton")
-        self.status_label.setText("Connection successful!")
+        self.status_label.setText(_("Connection successful!"))
         QC.QTimer.singleShot(1000, self.accept)
 
     def on_connection_failed(self) -> None:
@@ -113,7 +114,7 @@ class ConnectionDialog(QW.QDialog):
         self.progress_bar.setRange(0, 1)
         self.progress_bar.setValue(1)
         self.set_status_icon("MessageBoxCritical")
-        self.status_label.setText("Connection failed.")
+        self.status_label.setText(_("Connection failed."))
         QC.QTimer.singleShot(2000, self.reject)
 
 

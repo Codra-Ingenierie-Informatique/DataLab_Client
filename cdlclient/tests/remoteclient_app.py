@@ -23,6 +23,7 @@ from guidata.qthelpers import qt_app_context, qt_wait
 from qtpy import QtWidgets as QW
 
 from cdlclient import SimpleRemoteProxy
+from cdlclient.config import _
 from cdlclient.tests.remoteclient_base import AbstractClientWindow
 from cdlclient.tests.remoteclient_unit import multiple_commands
 from cdlclient.widgets import ConnectionDialog, GetObjectDialog
@@ -58,8 +59,8 @@ def try_send_command():
 class HostWindow(AbstractClientWindow):
     """Test main view"""
 
-    PURPOSE = "This the client application, which connects to DataLab."
-    INIT_BUTTON_LABEL = "Connect to DataLab"
+    PURPOSE = _("This the client application, which connects to DataLab.")
+    INIT_BUTTON_LABEL = _("Connect to DataLab")
     SIG_TITLES = ("Oscilloscope", "Digitizer", "Radiometer", "Voltmeter", "Sensor")
     IMA_TITLES = (
         "Camera",
@@ -96,11 +97,11 @@ class HostWindow(AbstractClientWindow):
     def add_additional_buttons(self):
         """Add additional buttons"""
         add_btn = self.host.add_button
-        add_btn("Execute multiple commands", self.exec_multiple_cmd, 10)
-        add_btn("Get object titles", self.get_object_titles, 10)
-        add_btn("Get object uuids", self.get_object_uuids, 10)
-        add_btn("Get object", self.get_object)
-        add_btn("Get object using dialog box", self.get_object_dialog)
+        add_btn(_("Execute multiple commands"), self.exec_multiple_cmd, 10)
+        add_btn(_("Get object titles"), self.get_object_titles, 10)
+        add_btn(_("Get object uuids"), self.get_object_uuids, 10)
+        add_btn(_("Get object"), self.get_object)
+        add_btn(_("Get object using dialog box"), self.get_object_dialog)
 
     @try_send_command()
     def exec_multiple_cmd(self):
@@ -150,7 +151,7 @@ class HostWindow(AbstractClientWindow):
     def get_object_dialog(self):
         """Get object (signal/image) using dialog box"""
         if self.cdl is not None:
-            dialog = GetObjectDialog(self, "Get object from DataLab", self.cdl)
+            dialog = GetObjectDialog(self, self.cdl)
             if dialog.exec():
                 uuid = dialog.get_current_object_uuid()
                 obj = self.cdl.get_object(uuid)

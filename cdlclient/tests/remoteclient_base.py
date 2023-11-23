@@ -16,6 +16,8 @@ from guidata.qthelpers import get_std_icon, win32_fix_title_bar_background
 from guidata.widgets.codeeditor import CodeEditor
 from qtpy import QtWidgets as QW
 
+from cdlclient.config import _
+
 
 class HostWidget(QW.QWidget):
     """Host widget: menu with action buttons, log viewer"""
@@ -83,7 +85,7 @@ class AbstractClientWindow(QW.QMainWindow, metaclass=AbstractClientWindowMeta):
     def __init__(self):
         super().__init__()
         win32_fix_title_bar_background(self)
-        self.setWindowTitle("Host application")
+        self.setWindowTitle(_("Host application"))
         self.setWindowIcon(get_std_icon("ComputerIcon"))
         self.cdl = None  # CDLMainWindow instance
         self.host = HostWidget(self)
@@ -110,12 +112,12 @@ class AbstractClientWindow(QW.QMainWindow, metaclass=AbstractClientWindowMeta):
         self.host.add_label(self.PURPOSE)
         add_btn = self.host.add_button
         add_btn(self.INIT_BUTTON_LABEL, self.init_cdl, 10, "DialogApplyButton")
-        add_btn("Raise window", self.raise_cdl, 0, "FileDialogToParent")
+        add_btn(_("Raise window"), self.raise_cdl, 0, "FileDialogToParent")
         self.add_additional_buttons()
-        add_btn("Add signal objects", self.add_signals, 10, "CommandLink")
-        add_btn("Add image objects", self.add_images, 0, "CommandLink")
-        add_btn("Remove all objects", self.remove_all, 5, "MessageBoxWarning")
-        add_btn("Close DataLab", self.close_cdl, 10, "DialogCloseButton")
+        add_btn(_("Add signal objects"), self.add_signals, 10, "CommandLink")
+        add_btn(_("Add image objects"), self.add_images, 0, "CommandLink")
+        add_btn(_("Remove all objects"), self.remove_all, 5, "MessageBoxWarning")
+        add_btn(_("Close DataLab"), self.close_cdl, 10, "DialogCloseButton")
 
     def add_additional_buttons(self):
         """Add additional buttons"""
@@ -143,5 +145,8 @@ class AbstractClientWindow(QW.QMainWindow, metaclass=AbstractClientWindowMeta):
         """Add images to DataLab"""
 
     @abc.abstractmethod
+    def remove_all(self):
+        """Remove all objects from DataLab"""
+
     def remove_all(self):
         """Remove all objects from DataLab"""

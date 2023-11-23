@@ -1,0 +1,106 @@
+# -*- coding: utf-8 -*-
+# cdl module translation file
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2023-11-23 17:34+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: utf-8\n"
+"Generated-By: pygettext.py 1.5\n"
+
+#: cdlclient\tests\remoteclient_app.py:62
+msgid "This the client application, which connects to DataLab."
+msgstr "Ceci l'application cliente, qui se connecte à DataLab."
+
+#: cdlclient\tests\remoteclient_app.py:63
+msgid "Connect to DataLab"
+msgstr "Se connecter à DataLab"
+
+#: cdlclient\tests\remoteclient_app.py:100
+msgid "Execute multiple commands"
+msgstr "Exécuter des commandes multiples"
+
+#: cdlclient\tests\remoteclient_app.py:101
+msgid "Get object titles"
+msgstr "Obtenir la liste des titres"
+
+#: cdlclient\tests\remoteclient_app.py:102
+msgid "Get object uuids"
+msgstr "Obtenir la liste des uuids"
+
+#: cdlclient\tests\remoteclient_app.py:103
+msgid "Get object"
+msgstr "Obtenir un objet"
+
+#: cdlclient\tests\remoteclient_app.py:104
+msgid "Get object using dialog box"
+msgstr "Obtenir un objet en utilisant une boîte de dialogue"
+
+#: cdlclient\tests\remoteclient_base.py:88
+msgid "Host application"
+msgstr "Application hôte"
+
+#: cdlclient\tests\remoteclient_base.py:115
+msgid "Raise window"
+msgstr "Mettre la fenêtre au premier plan"
+
+#: cdlclient\tests\remoteclient_base.py:117
+msgid "Add signal objects"
+msgstr "Ajouter des objets signal"
+
+#: cdlclient\tests\remoteclient_base.py:118
+msgid "Add image objects"
+msgstr "Ajouter des objets image"
+
+#: cdlclient\tests\remoteclient_base.py:119
+msgid "Remove all objects"
+msgstr "Supprimer tous les objets"
+
+#: cdlclient\tests\remoteclient_base.py:120
+msgid "Close DataLab"
+msgstr "Fermer DataLab"
+
+#: cdlclient\widgets\connection.py:58
+msgid "Connection to DataLab"
+msgstr "Connexion à DataLab"
+
+#: cdlclient\widgets\connection.py:70
+msgid "Waiting for connection..."
+msgstr "En attente de connexion..."
+
+#: cdlclient\widgets\connection.py:101
+msgid "Connecting to server..."
+msgstr "Connexion au serveur..."
+
+#: cdlclient\widgets\connection.py:109
+msgid "Connection successful!"
+msgstr "Connecté avec succès !"
+
+#: cdlclient\widgets\connection.py:117
+msgid "Connection failed."
+msgstr "Echec de la connexion."
+
+#: cdlclient\widgets\objectdialog.py:174
+msgid "Select object"
+msgstr "Sélectionner un objet"
+
+#: cdlclient\widgets\objectdialog.py:191
+msgid "Signals"
+msgstr "Signaux"
+
+#: cdlclient\widgets\objectdialog.py:192
+msgid "Images"
+msgstr "Images"
+
+#: cdlclient\widgets\objectdialog.py:196
+msgid "Active panel:"
+msgstr "Panneau actif :"
+
+#~ msgid "Get object from DataLab"
+#~ msgstr "Obtenir un objet depuis DataLab"

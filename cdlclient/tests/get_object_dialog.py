@@ -20,7 +20,7 @@ def test_dialog():
     proxy = SimpleRemoteProxy()
     proxy.connect()
     with qt_app_context():
-        dlg = GetObjectDialog(None, "Get object", proxy)
+        dlg = GetObjectDialog(None, proxy)
         if dlg.exec():
             obj_uuid = dlg.get_current_object_uuid()
             obj = proxy.get_object(obj_uuid)
