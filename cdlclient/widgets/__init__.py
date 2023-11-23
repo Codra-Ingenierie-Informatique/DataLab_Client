@@ -11,4 +11,4 @@ This module requires `guidata`_ and `qtpy`_ packages.
 """
 
 # pylint: disable=unused-import
-from cdlclient.widgets.connection import ConnectionDialog
+from cdlclient.widgets.connection import ConnectionDialog  # noqa: F401

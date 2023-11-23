@@ -14,8 +14,8 @@ application through XML-RPC protocol.
 """
 
 # pylint: disable=unused-import
-from cdlclient.baseproxy import SimpleBaseProxy
-from cdlclient.remote import SimpleRemoteProxy
+from cdlclient.baseproxy import SimpleBaseProxy  # noqa: F401
+from cdlclient.remote import SimpleRemoteProxy  # noqa: F401
 
 __version__ = "0.5.0"
 __docurl__ = "https://cdlclient.readthedocs.io/en/latest/"
