@@ -16,9 +16,15 @@ RES_PATH = osp.join(PKG_PATH, "resources")
 WIDGETS_PATH = osp.join(PKG_PATH, "cdlclient", "widgets")
 
 
-def convert_png_to_code(filename: str) -> bytes:
-    """Convert PNG image to Python code, so that it can be bundled with the
-    application, without having to load the image from disk."""
+def imagefile_to_base64(filename: str) -> bytes:
+    """Convert image file to Base64-encoded bytes
+
+    Args:
+        filename: image filename
+
+    Returns:
+        Base64-encoded bytes
+    """
     image = QG.QImage(filename)
     data = QC.QByteArray()
     buf = QC.QBuffer(data)
@@ -26,8 +32,30 @@ def convert_png_to_code(filename: str) -> bytes:
     return data.toBase64().data()
 
 
-def test_conv(filename: str, destmod: str) -> str:
-    """Test image to code conversion"""
+def imagefile_to_python_module(filename: str, destmod: str) -> None:
+    """Convert image file to Python module
+
+    Args:
+        filename: image filename
+        destmod: destination module name
+    """
+    data = imagefile_to_base64(filename)
+    destmod_path = osp.join(WIDGETS_PATH, destmod + ".py")
+    with open(destmod_path, "wb") as fn:
+        fn.write("# -*- coding: utf-8 -*-\n\n".encode("utf-8"))
+        fn.write("# pylint: skip-file\n\n".encode("utf-8"))
+        fn.write("DATA = b'".encode("utf-8"))
+        fn.write(data)
+        fn.write("'".encode("utf-8"))
+
+
+def test_conv(filename: str, destmod: str) -> None:
+    """Test image to code conversion
+
+    Args:
+        filename: image filename
+        destmod: destination module name
+    """
     with qt_app_context(exec_loop=True):
         widget = QW.QWidget()
         vlayout = QW.QVBoxLayout()
@@ -35,12 +63,7 @@ def test_conv(filename: str, destmod: str) -> str:
         label1 = QW.QLabel()
         label1.setPixmap(QG.QPixmap(filename))
         label2 = QW.QLabel()
-        data = convert_png_to_code(filename)
-        destmod_path = osp.join(WIDGETS_PATH, destmod + ".py")
-        with open(destmod_path, "wb") as fn:
-            fn.write("DATA = b'".encode("utf-8"))
-            fn.write(data)
-            fn.write("'".encode("utf-8"))
+        imagefile_to_python_module(filename, destmod)
         mod = __import__("cdlclient.widgets." + destmod, fromlist=[destmod])
         pixmap = QG.QPixmap()
         pixmap.loadFromData(QC.QByteArray.fromBase64(mod.DATA))
