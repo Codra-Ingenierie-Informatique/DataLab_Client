@@ -60,8 +60,8 @@ class SimpleObjectTree(QW.QTreeWidget):
                 textlist.append("    " + tl_item.child(index).text(0))
         return os.linesep.join(textlist)
 
-    def init_from(self, proxy: SimpleRemoteProxy) -> None:
-        """Init from another SimpleObjectList, without making copies of objects"""
+    def initialize(self, proxy: SimpleRemoteProxy) -> None:
+        """Initialize tree with objects, using proxy"""
         grp_titles, obj_uuids, obj_titles = proxy.get_group_titles_with_object_infos()
         self.__grp_titles = grp_titles
         self.__obj_uuids = obj_uuids
@@ -214,7 +214,7 @@ class GetObjectDialog(QW.QDialog):
             self.__proxy.set_current_panel(panel)
 
         self.tree = SimpleObjectTree(parent)
-        self.tree.init_from(proxy)
+        self.tree.initialize(proxy)
         self.tree.SIG_ITEM_DOUBLECLICKED.connect(lambda oid: self.accept())
         self.tree.itemSelectionChanged.connect(self.__current_object_changed)
 
@@ -236,14 +236,12 @@ class GetObjectDialog(QW.QDialog):
     def __change_panel(self, index: int) -> None:
         """Change panel"""
         self.__proxy.set_current_panel("signal" if index == 0 else "image")
-        self.tree.init_from(self.__proxy)
+        self.tree.initialize(self.__proxy)
         self.__current_object_changed()
 
     def __current_object_changed(self) -> None:
         """Item selection has changed"""
         self.__current_object_uuid = self.tree.get_current_item_id()
-        self.ok_btn.setEnabled(bool(self.__current_object_uuid))
-        self.ok_btn.setEnabled(bool(self.__current_object_uuid))
         self.ok_btn.setEnabled(bool(self.__current_object_uuid))
 
     def get_current_object_uuid(self) -> str:
