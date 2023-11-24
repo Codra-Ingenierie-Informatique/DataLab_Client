@@ -20,10 +20,20 @@ def test_dialog():
     proxy = SimpleRemoteProxy()
     proxy.connect()
     with qt_app_context():
+        # 1. Select an image or signal object
         dlg = GetObjectDialog(None, proxy)
         if dlg.exec():
-            obj_uuid = dlg.get_current_object_uuid()
-            obj = proxy.get_object(obj_uuid)
+            obj = proxy.get_object(dlg.get_current_object_uuid())
+            print(str(obj))
+        # 2. Select a signal object only
+        dlg = GetObjectDialog(None, proxy, panel="signal")
+        if dlg.exec():
+            obj = proxy.get_object(dlg.get_current_object_uuid())
+            print(str(obj))
+        # 3. Select an image object only
+        dlg = GetObjectDialog(None, proxy, panel="image")
+        if dlg.exec():
+            obj = proxy.get_object(dlg.get_current_object_uuid())
             print(str(obj))
 
 

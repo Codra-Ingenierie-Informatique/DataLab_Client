@@ -160,18 +160,28 @@ class SimpleObjectTree(QW.QTreeWidget):
 
 
 class GetObjectDialog(QW.QDialog):
-    """Get object dialog box"""
+    """Get object dialog box
+
+    Args:
+        parent: Parent widget
+        proxy: Remote proxy
+        panel: Panel to retrieve objects from ('signal', 'image' or None for both)
+        title: Dialog title
+    """
 
     def __init__(
         self,
         parent: QW.QWidget,
         proxy: SimpleRemoteProxy,
+        panel: str | None = None,
         title: str | None = None,
     ) -> None:
         super().__init__(parent)
+        assert panel in (None, "signal", "image")
         self.__proxy = proxy
         self.__current_object_uuid: str | None = None
         self.setWindowTitle(_("Select object") if title is None else title)
+        self.setWindowIcon(svgtext_to_icon(svg_icons.DATALAB))
         vlayout = QW.QVBoxLayout()
         self.setLayout(vlayout)
 
@@ -181,31 +191,37 @@ class GetObjectDialog(QW.QDialog):
         logo_label.setPixmap(pixmap)
         logo_label.setAlignment(QC.Qt.AlignCenter)
 
-        panelgroup = QW.QWidget()
-        panellayout = QW.QHBoxLayout()
-        panellayout.setContentsMargins(0, 0, 0, 0)
-        # panellayout.setAlignment(QC.Qt.AlignCenter)
-        panelgroup.setLayout(panellayout)
+        panelgroup = None
+        if panel is None:
+            panelgroup = QW.QWidget()
+            panellayout = QW.QHBoxLayout()
+            panellayout.setContentsMargins(0, 0, 0, 0)
+            # panellayout.setAlignment(QC.Qt.AlignCenter)
+            panelgroup.setLayout(panellayout)
 
-        panelcombo = QW.QComboBox()
-        panelcombo.addItem(svgtext_to_icon(svg_icons.SIGNAL), _("Signals"))
-        panelcombo.addItem(svgtext_to_icon(svg_icons.IMAGE), _("Images"))
-        panelcombo.setCurrentIndex(0 if proxy.get_current_panel() == "signal" else 1)
-        panelcombo.currentIndexChanged.connect(self.__change_panel)
+            panelcombo = QW.QComboBox()
+            panelcombo.addItem(svgtext_to_icon(svg_icons.SIGNAL), _("Signals"))
+            panelcombo.addItem(svgtext_to_icon(svg_icons.IMAGE), _("Images"))
+            if proxy.get_current_panel() == "image":
+                panelcombo.setCurrentIndex(1)
+            panelcombo.currentIndexChanged.connect(self.__change_panel)
 
-        panellabel = QW.QLabel(_("Active panel:"))
-        panellayout.addWidget(panellabel)
-        panellayout.addWidget(panelcombo)
-        panellayout.setStretch(1, 1)
+            panellabel = QW.QLabel(_("Active panel:"))
+            panellayout.addWidget(panellabel)
+            panellayout.addWidget(panelcombo)
+            panellayout.setStretch(1, 1)
+        else:
+            self.__proxy.set_current_panel(panel)
 
         self.tree = SimpleObjectTree(parent)
         self.tree.init_from(proxy)
         self.tree.SIG_ITEM_DOUBLECLICKED.connect(lambda oid: self.accept())
-        self.tree.itemSelectionChanged.connect(self.current_object_changed)
+        self.tree.itemSelectionChanged.connect(self.__current_object_changed)
 
         vlayout.addWidget(logo_label)
         vlayout.addSpacing(10)
-        vlayout.addWidget(panelgroup)
+        if panelgroup is not None:
+            vlayout.addWidget(panelgroup)
         vlayout.addWidget(self.tree)
 
         bbox = QW.QDialogButtonBox(QW.QDialogButtonBox.Ok | QW.QDialogButtonBox.Cancel)
@@ -215,21 +231,21 @@ class GetObjectDialog(QW.QDialog):
         vlayout.addSpacing(10)
         vlayout.addWidget(bbox)
         # Update OK button state:
-        self.current_object_changed()
+        self.__current_object_changed()
 
     def __change_panel(self, index: int) -> None:
         """Change panel"""
         self.__proxy.set_current_panel("signal" if index == 0 else "image")
         self.tree.init_from(self.__proxy)
-        self.current_object_changed()
+        self.__current_object_changed()
 
-    def get_current_object_uuid(self) -> str:
-        """Return current object uuid"""
-        return self.__current_object_uuid
-
-    def current_object_changed(self) -> None:
+    def __current_object_changed(self) -> None:
         """Item selection has changed"""
         self.__current_object_uuid = self.tree.get_current_item_id()
         self.ok_btn.setEnabled(bool(self.__current_object_uuid))
         self.ok_btn.setEnabled(bool(self.__current_object_uuid))
         self.ok_btn.setEnabled(bool(self.__current_object_uuid))
+
+    def get_current_object_uuid(self) -> str:
+        """Return current object uuid"""
+        return self.__current_object_uuid

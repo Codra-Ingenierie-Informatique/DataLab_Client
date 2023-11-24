@@ -22,7 +22,8 @@ from qtpy import QtGui as QG
 from qtpy import QtWidgets as QW
 
 from cdlclient.config import _
-from cdlclient.widgets import datalab_banner
+from cdlclient.qthelpers import svgtext_to_icon
+from cdlclient.widgets import datalab_banner, svg_icons
 
 
 class ConnectionThread(QC.QThread):
@@ -56,6 +57,7 @@ class ConnectionDialog(QW.QDialog):
         super().__init__(parent)
         win32_fix_title_bar_background(self)
         self.setWindowTitle(_("Connection to DataLab"))
+        self.setWindowIcon(svgtext_to_icon(svg_icons.DATALAB))
         self.resize(300, 50)
         self.host_label = QW.QLabel()
         pixmap = QG.QPixmap()
@@ -79,43 +81,43 @@ class ConnectionDialog(QW.QDialog):
         layout.addWidget(status)
         self.setLayout(layout)
         self.thread = ConnectionThread(connect_callback)
-        self.thread.SIG_CONNECTION_OK.connect(self.on_connection_successful)
-        self.thread.SIG_CONNECTION_KO.connect(self.on_connection_failed)
+        self.thread.SIG_CONNECTION_OK.connect(self.__on_connection_successful)
+        self.thread.SIG_CONNECTION_KO.connect(self.__on_connection_failed)
         button_box = QW.QDialogButtonBox(QW.QDialogButtonBox.Cancel)
         button_box.rejected.connect(self.reject)
         layout.addWidget(button_box)
 
-    def set_status_icon(self, name: str) -> None:
+    def __set_status_icon(self, name: str) -> None:
         """Set status icon with standard Qt icon name"""
         self.status_icon.setPixmap(QG.QPixmap(get_std_icon(name).pixmap(24)))
 
-    def exec(self) -> int:
-        """Execute dialog"""
-        self.connect_to_server()
-        return super().exec()
-
-    def connect_to_server(self) -> None:
+    def __connect_to_server(self) -> None:
         """Connect to server"""
         self.progress_bar.setRange(0, 0)
-        self.set_status_icon("BrowserReload")
+        self.__set_status_icon("BrowserReload")
         self.status_label.setText(_("Connecting to server..."))
         self.thread.start()
 
-    def on_connection_successful(self) -> None:
+    def __on_connection_successful(self) -> None:
         """Connection successful"""
         self.progress_bar.setRange(0, 1)
         self.progress_bar.setValue(1)
-        self.set_status_icon("DialogApplyButton")
+        self.__set_status_icon("DialogApplyButton")
         self.status_label.setText(_("Connection successful!"))
         QC.QTimer.singleShot(1000, self.accept)
 
-    def on_connection_failed(self) -> None:
+    def __on_connection_failed(self) -> None:
         """Connection failed"""
         self.progress_bar.setRange(0, 1)
         self.progress_bar.setValue(1)
-        self.set_status_icon("MessageBoxCritical")
+        self.__set_status_icon("MessageBoxCritical")
         self.status_label.setText(_("Connection failed."))
         QC.QTimer.singleShot(2000, self.reject)
+
+    def exec(self) -> int:
+        """Execute dialog"""
+        self.__connect_to_server()
+        return super().exec()
 
 
 if __name__ == "__main__":
