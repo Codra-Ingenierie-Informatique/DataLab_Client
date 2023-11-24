@@ -30,6 +30,16 @@ DataLab is available as a **stand-alone** application (see for example our all-i
 DataLab Simple Client is a Python library that can be used to interact with a DataLab application (server).
 This allows to control DataLab application from a remote computer, or/and from a third-party application.
 
+DataLab Simple Client also provides ready-to-use widgets that can be used to communicate with a DataLab application:
+
+* `ConnectionDialog`: a dialog box that allows to connect to a DataLab application
+
+* `GetObjetDialog`: a dialog box that allows to retrieve an object from a DataLab application
+
+`ConnectionDialog`         | `GetObjectDialog`
+:-------------------------:|:-------------------------:
+![ConnectionDialog](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/main/doc/images/shots/connect_dialog.png) | ![GetObjectDialog](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/main/doc/images/shots/get_object_dialog.png)
+
 See [documentation](https://cdlclient.readthedocs.io/en/latest/) for more details on
 the library and [changelog](https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/main/CHANGELOG.md)
 for recent history of changes.
