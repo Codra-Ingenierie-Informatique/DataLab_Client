@@ -19,8 +19,10 @@ on `QtPy`_.
 
 .. figure:: _static/plotpy-stack-powered.png
     :align: center
+    :width: 300 px
 
-    DataLab is powered by `PlotPyStack <https://github.com/PlotPyStack>`_
+    DataLab is powered by `PlotPyStack <https://github.com/PlotPyStack>`_,
+    the Python-Qt visualization and scientific graphical user interface stack.
 
 External resources:
     .. list-table::
