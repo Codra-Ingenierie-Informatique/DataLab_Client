@@ -14,8 +14,8 @@ os.environ["CDL_DOC"] = "1"
 # -- Project information -----------------------------------------------------
 
 project = "DataLab Simple Client"
-author = "Pierre Raybaut"
-copyright = "2023, Codra - " + author
+author = ""
+copyright = "2023, Codra - Pierre Raybaut"
 html_logo = "_static/DataLab-title.png"
 latex_logo = "_static/DataLab-Frontpage.png"
 release = cdlclient.__version__
