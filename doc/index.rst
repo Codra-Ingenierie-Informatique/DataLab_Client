@@ -22,7 +22,11 @@ on `QtPy`_.
     :width: 300 px
 
     DataLab is powered by `PlotPyStack <https://github.com/PlotPyStack>`_,
-    the Python-Qt visualization and scientific graphical user interface stack.
+    the scientific Python-Qt visualization and graphical user interface stack.
+
+.. note:: DataLab was created by `Codra`_/`Pierre Raybaut`_ in 2023. It is
+          developed and maintained by DataLab open-source project team with
+          the support of `Codra`_.
 
 External resources:
     .. list-table::
@@ -44,7 +48,7 @@ External resources:
 Copyrights and licensing
 ------------------------
 
-- Copyright © 2023 `Codra`_, Pierre Raybaut
+- Copyright © 2023 `Codra`_, `Pierre Raybaut`_
 - Licensed under the terms of the `BSD 3-Clause`_
 
 .. _PlotPyStack: https://github.com/PlotPyStack
@@ -56,3 +60,4 @@ Copyrights and licensing
 .. _Documentation: https://cdlapp.readthedocs.io/
 .. _Codra: https://codra.net/
 .. _BSD 3-Clause: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/master/LICENSE
+.. _Pierre Raybaut: https://github.com/PierreRaybaut/

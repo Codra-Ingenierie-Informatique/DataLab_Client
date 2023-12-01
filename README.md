@@ -7,7 +7,7 @@
 [![PyPI status](https://img.shields.io/pypi/status/cdlclient.svg)](https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/cdlclient.svg)](https://pypi.python.org/pypi/cdlclient/)
 
-ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by DataLab open-source project team.
+ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by DataLab open-source project team with the support of [Codra](https://codra.net/).
 
 ℹ️ DataLab is powered by [PlotPyStack](https://github.com/PlotPyStack) 🚀.
 
