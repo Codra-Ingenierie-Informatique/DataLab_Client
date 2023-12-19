@@ -23,6 +23,7 @@ import os
 import os.path as osp
 import sys
 import time
+import warnings
 from io import BytesIO
 from xmlrpc.client import Binary, ServerProxy
 
@@ -32,6 +33,7 @@ from guidata.dataset.io import JSONReader, JSONWriter
 from guidata.env import execenv
 from guidata.userconfig import get_config_basedir
 
+import cdlclient
 from cdlclient import simplemodel
 from cdlclient.baseproxy import SimpleBaseProxy
 from cdlclient.simplemodel import ImageObj, SignalObj
@@ -194,6 +196,33 @@ def json_to_items(json_str: str | None) -> list:
     return items
 
 
+def is_version_at_least(version1: str, version2: str) -> bool:
+    """
+    Compare two version strings to check if the first version is at least
+    equal to the second.
+
+    Args:
+        version1 (str): The first version string.
+        version2 (str): The second version string.
+
+    Returns:
+        bool: True if version1 is greater than or equal to version2, False otherwise.
+    """
+    # Split the version strings into parts
+    parts1 = [int(part) for part in version1.split(".")]
+    parts2 = [int(part) for part in version2.split(".")]
+
+    # Compare each part
+    for part1, part2 in zip(parts1, parts2):
+        if part1 > part2:
+            return True
+        elif part1 < part2:
+            return False
+
+    # Check if version1 is shorter and thus less than version2
+    return len(parts1) >= len(parts2)
+
+
 class SimpleRemoteProxy(SimpleBaseProxy):
     """Object representing a proxy/client to DataLab XML-RPC server.
     This object is used to call DataLab functions from a Python script.
@@ -247,9 +276,18 @@ class SimpleRemoteProxy(SimpleBaseProxy):
         self.port = port
         self._cdl = ServerProxy(f"http://127.0.0.1:{port}", allow_none=True)
         try:
-            self.get_version()
+            version = self.get_version()
         except ConnectionRefusedError as exc:
             raise ConnectionRefusedError("DataLab is currently not running") from exc
+        # If DataLab version is not compatible with this client, show a warning using
+        # standard `warnings` module:
+        if not is_version_at_least(version, cdlclient.__required_server_version__):
+            warnings.warn(
+                f"DataLab version {version} is not fully compatible with "
+                f"DataLab Simple Client version {cdlclient.__version__}.\n"
+                f"Please upgrade DataLab to {cdlclient.__required_server_version__} "
+                f"or higher."
+            )
 
     def connect(
         self,
