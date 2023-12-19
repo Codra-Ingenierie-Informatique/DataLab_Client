@@ -1,5 +1,12 @@
 # DataLab Simple Client Releases #
 
+## Version 0.7.0 ##
+
+💥 Changes:
+
+* Added `toggle_auto_refresh` method to `SimpleRemoteProxy`
+* Added `toggle_show_titles` method to `SimpleRemoteProxy`
+
 ## Version 0.6.0 ##
 
 💥 Changes:
