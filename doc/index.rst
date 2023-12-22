@@ -55,7 +55,7 @@ Copyrights and licensing
 .. _guidata: https://pypi.python.org/pypi/guidata
 .. _PlotPy: https://pypi.python.org/pypi/PlotPy
 .. _QtPy: https://pypi.python.org/pypi/QtPy
-.. _PyPI: https://pypi.python.org/pypi/DataLab
+.. _PyPI: https://pypi.python.org/pypi/cdlclient
 .. _Home: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/
 .. _Documentation: https://cdlapp.readthedocs.io/
 .. _Codra: https://codra.net/
