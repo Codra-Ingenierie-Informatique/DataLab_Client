@@ -8,6 +8,7 @@ With older versions of the DataLab server, some features may not work.
 💥 Changes:
 
 * Added `toggle_auto_refresh` method to `SimpleRemoteProxy`
+* Added `context_no_refresh` method to `SimpleRemoteProxy` (context manager)
 * Added `toggle_show_titles` method to `SimpleRemoteProxy`
 * Remote client is now checking the server version and shows a warning message if
   the server version may not be fully compatible with the client version.
