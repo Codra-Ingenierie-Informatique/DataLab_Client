@@ -1,5 +1,14 @@
 # DataLab Simple Client Releases #
 
+## Version 0.8.0 ##
+
+DataLab Simple Client is fully compatible with **DataLab 0.11.0** and above.
+With older versions of the DataLab server, some features may not work.
+
+💥 Changes:
+
+* Added `keep_roi` argument to `SimpleRemoteProxy.delete_metadata` method
+
 ## Version 0.7.0 ##
 
 DataLab Simple Client is fully compatible with **DataLab 0.10.0** and above.
