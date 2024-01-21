@@ -451,6 +451,8 @@ class SimpleRemoteProxy(SimpleBaseProxy):
             KeyError: if object not found
         """
         param_data = self._cdl.get_object(nb_id_title, panel)
+        if param_data is None:
+            return None
         return json_to_dataset(param_data)
 
     def get_object_shapes(

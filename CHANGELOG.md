@@ -9,6 +9,11 @@ With older versions of the DataLab server, some features may not work.
 
 * Added `keep_roi` argument to `SimpleRemoteProxy.delete_metadata` method
 
+🛠️ Bug fixes:
+
+* Fixed `SimpleRemoteProxy.get_object` method when there is no object to return
+  (`None` is returned instead of an exception)
+
 ## Version 0.7.0 ##
 
 DataLab Simple Client is fully compatible with **DataLab 0.10.0** and above.
