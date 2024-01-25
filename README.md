@@ -7,7 +7,7 @@
 [![PyPI status](https://img.shields.io/pypi/status/cdlclient.svg)](https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/cdlclient.svg)](https://pypi.python.org/pypi/cdlclient/)
 
-ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by DataLab open-source project team with the support of [Codra](https://codra.net/).
+ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by DataLab open-source project team.
 
 ℹ️ DataLab is powered by [PlotPyStack](https://github.com/PlotPyStack) 🚀.
 
@@ -24,6 +24,8 @@ libraries (such as NumPy, SciPy or scikit-image) and Qt graphical user interface
 [PlotPy](https://github.com/PlotPyStack/PlotPy) libraries).
 
 DataLab is available as a **stand-alone** application (see for example our all-in-one Windows installer) or as an **addon to your Python-Qt application** thanks to advanced automation and embedding features.
+
+See [DataLab website](https://codra-ingenierie-informatique.github.io/DataLab/) for more details.
 
 ## About this package
 
@@ -43,13 +45,3 @@ DataLab Simple Client also provides ready-to-use widgets that can be used to com
 See [documentation](https://cdlclient.readthedocs.io/en/latest/) for more details on
 the library and [changelog](https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/main/CHANGELOG.md)
 for recent history of changes.
-
-Copyrights and licensing:
-
-* Copyright © 2023 [Codra](https://codra.net/), [Pierre Raybaut](https://github.com/PierreRaybaut).
-* Licensed under the terms of the BSD 3-Clause (see [LICENSE](LICENSE)).
-
-## Dependencies and other installation methods
-
-See [Installation](https://cdlclient.readthedocs.io/en/latest/installation.html)
-section in the documentation for more details.

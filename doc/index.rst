@@ -1,13 +1,14 @@
 DataLab Simple Client User Guide
 ================================
 
-DataLab is a **generic signal and image processing software**
-with unique features designed to meet industrial requirements.
-It is based on Python scientific libraries (such as NumPy,
-SciPy or scikit-image) and Qt graphical user interfaces (thanks to
-the powerful `PlotPyStack`_ - mostly the `guidata`_ and `PlotPy`_ libraries).
+DataLab is an **open-source platform for scientific and technical data processing
+and visualization** with unique features designed to meet industrial requirements.
+It is based on Python scientific libraries (such as NumPy, SciPy or scikit-image)
+and Qt graphical user interfaces (thanks to `PlotPyStack`_).
 
-For more details, see DataLab `Documentation`_.
+.. seealso::
+
+    For more details, see DataLab `Website`_.
 
 DataLab Simple Client (``cdlclient`` package) is a Python library providing a
 remote proxy to a DataLab application (server). It allows to use DataLab
@@ -25,8 +26,7 @@ on `QtPy`_.
     the scientific Python-Qt visualization and graphical user interface stack.
 
 .. note:: DataLab was created by `Codra`_/`Pierre Raybaut`_ in 2023. It is
-          developed and maintained by DataLab open-source project team with
-          the support of `Codra`_.
+          developed and maintained by DataLab open-source project.
 
 External resources:
     .. list-table::
@@ -45,19 +45,13 @@ External resources:
    overview
    api
 
-Copyrights and licensing
-------------------------
-
-- Copyright © 2023 `Codra`_, `Pierre Raybaut`_
-- Licensed under the terms of the `BSD 3-Clause`_
-
 .. _PlotPyStack: https://github.com/PlotPyStack
 .. _guidata: https://pypi.python.org/pypi/guidata
 .. _PlotPy: https://pypi.python.org/pypi/PlotPy
 .. _QtPy: https://pypi.python.org/pypi/QtPy
 .. _PyPI: https://pypi.python.org/pypi/cdlclient
 .. _Home: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/
-.. _Documentation: https://cdlapp.readthedocs.io/
+.. _Website: https://codra-ingenierie-informatique.github.io/DataLab/
 .. _Codra: https://codra.net/
 .. _BSD 3-Clause: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/master/LICENSE
 .. _Pierre Raybaut: https://github.com/PierreRaybaut/
