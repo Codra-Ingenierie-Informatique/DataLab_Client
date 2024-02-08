@@ -1,6 +1,6 @@
 # DataLab Simple Client Releases #
 
-## Version 0.8.0 ##
+## Version 0.8.1 ##
 
 DataLab Simple Client is fully compatible with **DataLab 0.11.0** and above.
 With older versions of the DataLab server, some features may not work.
