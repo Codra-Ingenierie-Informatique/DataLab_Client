@@ -301,11 +301,11 @@ class SimpleAbstractCDLControl(abc.ABC):
         Objects are sorted by group number and object index in group.
 
         Args:
-            panel (str | None): panel name (valid values: "signal", "image").
-                If None, current panel is used.
+            panel: panel name (valid values: "signal", "image", "macro").
+             If None, current data panel is used (i.e. signal or image panel).
 
         Returns:
-            list[str]: list of object titles
+            List of object titles
 
         Raises:
             ValueError: if panel not found
@@ -388,6 +388,32 @@ class SimpleAbstractCDLControl(abc.ABC):
                 If None, the title is the object title.
             panel (str | None): panel name (valid values: "signal", "image").
                 If None, current panel is used.
+        """
+
+    @abc.abstractmethod
+    def run_macro(self, number_or_title: int | str | None = None) -> None:
+        """Run macro.
+
+        Args:
+             number: Number of the macro (starting at 1). Defaults to None (run
+              current macro, or does nothing if there is no macro).
+        """
+
+    @abc.abstractmethod
+    def stop_macro(self, number_or_title: int | str | None = None) -> None:
+        """Stop macro.
+
+        Args:
+            number: Number of the macro (starting at 1). Defaults to None (stop
+             current macro, or does nothing if there is no macro).
+        """
+
+    @abc.abstractmethod
+    def import_macro_from_file(self, filename: str) -> None:
+        """Import macro from file
+
+        Args:
+            filename: Filename.
         """
 
     @abc.abstractmethod
@@ -636,11 +662,11 @@ class SimpleBaseProxy(SimpleAbstractCDLControl, metaclass=abc.ABCMeta):
         Objects are sorted by group number and object index in group.
 
         Args:
-            panel (str | None): panel name (valid values: "signal", "image").
-                If None, current panel is used.
+            panel: panel name (valid values: "signal", "image", "macro").
+             If None, current data panel is used (i.e. signal or image panel).
 
         Returns:
-            list[str]: list of object titles
+            List of object titles
 
         Raises:
             ValueError: if panel not found
@@ -675,3 +701,29 @@ class SimpleBaseProxy(SimpleAbstractCDLControl, metaclass=abc.ABCMeta):
                 If None, current panel is used.
         """
         self._cdl.add_label_with_title(title, panel)
+
+    def run_macro(self, number_or_title: int | str | None = None) -> None:
+        """Run macro.
+
+        Args:
+             number: Number of the macro (starting at 1). Defaults to None (run
+              current macro, or does nothing if there is no macro).
+        """
+        self._cdl.run_macro(number_or_title)
+
+    def stop_macro(self, number_or_title: int | str | None = None) -> None:
+        """Stop macro.
+
+        Args:
+            number: Number of the macro (starting at 1). Defaults to None (stop
+             current macro, or does nothing if there is no macro).
+        """
+        self._cdl.stop_macro(number_or_title)
+
+    def import_macro_from_file(self, filename: str) -> None:
+        """Import macro from file
+
+        Args:
+            filename: Filename.
+        """
+        return self._cdl.import_macro_from_file(filename)
