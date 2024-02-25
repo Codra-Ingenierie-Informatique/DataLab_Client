@@ -77,7 +77,6 @@ def multiple_commands(remote: SimpleRemoteProxy):
 def test():
     """Remote client test"""
     remote = SimpleRemoteProxy()
-    remote.connect()
     execenv.print("Executing multiple commands...", end="")
     multiple_commands(remote)
     execenv.print("OK")

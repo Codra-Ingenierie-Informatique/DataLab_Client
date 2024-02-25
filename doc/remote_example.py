@@ -14,12 +14,11 @@ Created on Fri May 12 12:28:56 2023
 import numpy as np
 
 # DataLab remote control client:
-from cdlclient import SimpleRemoteProxy
+from cdlclient import SimpleRemoteProxy as RemoteProxy
 
 # %% Connecting to DataLab current session
 
-proxy = SimpleRemoteProxy()
-proxy.connect()
+proxy = RemoteProxy()
 
 # %% Executing commands in DataLab (...)
 

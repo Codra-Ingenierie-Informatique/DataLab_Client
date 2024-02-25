@@ -1,5 +1,19 @@
 # DataLab Simple Client Releases #
 
+## Version 0.9.0 ##
+
+DataLab Simple Client is fully compatible with **DataLab 0.11.0** and above.
+With older versions of the DataLab server, some features may not work.
+
+💥 Changes:
+
+* Remote API (`SimpleRemoteProxy`):
+  * Changed constructor signature to accept `autoconnect` as argument,
+    defaulting to `True`
+  * Thus, when creating a `SimpleRemoteProxy` instance, the connection to the
+    server is now established automatically by default (i.e. same behavior as
+    DataLab's `cdl.proxy.RemoteProxy` class)
+
 ## Version 0.8.1 ##
 
 DataLab Simple Client is fully compatible with **DataLab 0.11.0** and above.

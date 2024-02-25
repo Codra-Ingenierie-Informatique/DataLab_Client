@@ -18,7 +18,7 @@ from cdlclient.widgets import ConnectionDialog
 
 def test_dialog():
     """Test connection dialog"""
-    proxy = SimpleRemoteProxy()
+    proxy = SimpleRemoteProxy(autoconnect=False)
     with qt_app_context():
         dlg = ConnectionDialog(proxy.connect)
         if dlg.exec():

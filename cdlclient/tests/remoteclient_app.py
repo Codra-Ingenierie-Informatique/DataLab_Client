@@ -73,7 +73,7 @@ class HostWindow(AbstractClientWindow):
     def init_cdl(self):
         """Open DataLab test"""
         if self.cdl is None:
-            self.cdl: SimpleRemoteProxy = SimpleRemoteProxy()
+            self.cdl = SimpleRemoteProxy(autoconnect=False)
             connect_dlg = ConnectionDialog(self.cdl.connect, self)
             ok = connect_dlg.exec()
             if ok:

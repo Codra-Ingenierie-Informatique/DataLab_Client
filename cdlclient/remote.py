@@ -230,13 +230,19 @@ class SimpleRemoteProxy(SimpleBaseProxy):
     This is a subset of DataLab's `RemoteClient` class, with only the methods
     that do not require DataLab object model to be implemented.
 
+    Args:
+        autoconnect: If True, automatically connect to DataLab XML-RPC server.
+         Defaults to True.
+
+    Raises:
+        ConnectionRefusedError: DataLab is currently not running
+
     Examples:
         Here is a simple example of how to use SimpleRemoteProxy in a Python script
         or in a Jupyter notebook:
 
         >>> from cdlclient import SimpleRemoteProxy
-        >>> proxy = SimpleRemoteProxy()
-        >>> proxy.connect()
+        >>> proxy = SimpleRemoteProxy()  # autoconnect is on by default
         Connecting to DataLab XML-RPC server...OK (port: 28867)
         >>> proxy.get_version()
         '1.0.0'
@@ -254,10 +260,12 @@ class SimpleRemoteProxy(SimpleBaseProxy):
         array([1., 2., 3.])
     """
 
-    def __init__(self) -> None:
+    def __init__(self, autoconnect: bool = True) -> None:
         super().__init__()
         self.port: str = None
         self._cdl: ServerProxy
+        if autoconnect:
+            self.connect()
 
     def __connect_to_server(self, port: str | None = None) -> None:
         """Connect to DataLab XML-RPC server.

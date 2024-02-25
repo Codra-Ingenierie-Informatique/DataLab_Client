@@ -18,7 +18,6 @@ from cdlclient.widgets import GetObjectDialog
 def test_dialog():
     """Test connection dialog"""
     proxy = SimpleRemoteProxy()
-    proxy.connect()
     with qt_app_context():
         # 1. Select an image or signal object
         dlg = GetObjectDialog(None, proxy)
