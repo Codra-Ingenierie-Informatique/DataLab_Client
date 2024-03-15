@@ -1,10 +1,10 @@
 ## DataLab Simple Client
 
-![DataLab](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/main/doc/images/DataLab-banner.png)
+![DataLab](https://raw.githubusercontent.com/DataLab-Platform/DataLabSimpleClient/main/doc/images/DataLab-banner.png)
 
 [![license](https://img.shields.io/pypi/l/cdlclient.svg)](./LICENSE)
 [![pypi version](https://img.shields.io/pypi/v/cdlclient.svg)](https://pypi.org/project/cdlclient/)
-[![PyPI status](https://img.shields.io/pypi/status/cdlclient.svg)](https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient)
+[![PyPI status](https://img.shields.io/pypi/status/cdlclient.svg)](https://github.com/DataLab-Platform/DataLabSimpleClient)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/cdlclient.svg)](https://pypi.python.org/pypi/cdlclient/)
 
 ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by DataLab open-source project team.
@@ -25,7 +25,7 @@ libraries (such as NumPy, SciPy or scikit-image) and Qt graphical user interface
 
 DataLab is available as a **stand-alone** application (see for example our all-in-one Windows installer) or as an **addon to your Python-Qt application** thanks to advanced automation and embedding features.
 
-See [DataLab website](https://codra-ingenierie-informatique.github.io/DataLab/) for more details.
+See [DataLab website](https://datalab-platform.com/) for more details.
 
 ## About this package
 
@@ -40,8 +40,8 @@ DataLab Simple Client also provides ready-to-use widgets that can be used to com
 
 `ConnectionDialog`         | `GetObjectDialog`
 :-------------------------:|:-------------------------:
-![ConnectionDialog](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/main/doc/images/shots/connect_dialog.png) | ![GetObjectDialog](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/main/doc/images/shots/get_object_dialog.png)
+![ConnectionDialog](https://raw.githubusercontent.com/DataLab-Platform/DataLabSimpleClient/main/doc/images/shots/connect_dialog.png) | ![GetObjectDialog](https://raw.githubusercontent.com/DataLab-Platform/DataLabSimpleClient/main/doc/images/shots/get_object_dialog.png)
 
 See [documentation](https://cdlclient.readthedocs.io/en/latest/) for more details on
-the library and [changelog](https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/main/CHANGELOG.md)
+the library and [changelog](https://github.com/DataLab-Platform/DataLabSimpleClient/blob/main/CHANGELOG.md)
 for recent history of changes.

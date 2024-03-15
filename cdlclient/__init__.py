@@ -10,7 +10,7 @@ DataLab Simple Client
 DataLab Simple Client (`cdlclient`) is a Python library providing a proxy to `DataLab`_
 application through XML-RPC protocol.
 
-.. _DataLab: https://codra-ingenierie-informatique.github.io/DataLab/
+.. _DataLab: https://datalab-platform.com/
 """
 
 # pylint: disable=unused-import
@@ -20,4 +20,4 @@ from cdlclient.remote import SimpleRemoteProxy  # noqa: F401
 __version__ = "0.9.0"
 __required_server_version__ = "0.13.0"
 __docurl__ = "https://cdlclient.readthedocs.io/en/latest/"
-__homeurl__ = "https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/"
+__homeurl__ = "https://github.com/DataLab-Platform/DataLabSimpleClient/"

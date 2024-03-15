@@ -50,8 +50,8 @@ External resources:
 .. _PlotPy: https://pypi.python.org/pypi/PlotPy
 .. _QtPy: https://pypi.python.org/pypi/QtPy
 .. _PyPI: https://pypi.python.org/pypi/cdlclient
-.. _Home: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/
-.. _Website: https://codra-ingenierie-informatique.github.io/DataLab/
+.. _Home: https://github.com/DataLab-Platform/DataLabSimpleClient/
+.. _Website: https://datalab-platform.com/
 .. _Codra: https://codra.net/
-.. _BSD 3-Clause: https://github.com/Codra-Ingenierie-Informatique/DataLabSimpleClient/blob/master/LICENSE
+.. _BSD 3-Clause: https://github.com/DataLab-Platform/DataLabSimpleClient/blob/master/LICENSE
 .. _Pierre Raybaut: https://github.com/PierreRaybaut/
