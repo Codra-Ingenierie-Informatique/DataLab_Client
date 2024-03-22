@@ -1,5 +1,15 @@
 # DataLab Simple Client Releases #
 
+## Version 0.10.0 ##
+
+DataLab Simple Client is fully compatible with **DataLab 0.15.0** and above.
+With older versions of the DataLab server, some features may not work.
+
+💥 Changes:
+
+* Remote API (`SimpleRemoteProxy`):
+  * Merged `open_object` and `open_objects` methods to `load_from_files`
+
 ## Version 0.9.1 ##
 
 DataLab Simple Client is fully compatible with **DataLab 0.14.0** and above.
