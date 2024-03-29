@@ -12,8 +12,6 @@ This module handles `DataLab Simple Client` configuration.
 
 from __future__ import annotations
 
-import os.path as osp
-
 from guidata import configtools
 
 MOD_NAME = "cdlclient"

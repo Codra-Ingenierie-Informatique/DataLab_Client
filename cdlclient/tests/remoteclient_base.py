@@ -147,6 +147,3 @@ class AbstractClientWindow(QW.QMainWindow, metaclass=AbstractClientWindowMeta):
     @abc.abstractmethod
     def remove_all(self):
         """Remove all objects from DataLab"""
-
-    def remove_all(self):
-        """Remove all objects from DataLab"""
