@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright © 2023 Codra
-# Pierre Raybaut
+# Copyright (c) DataLab Platform Developers, BSD 3-Clause license, see LICENSE file.
 
 """
 Module providing a connection dialog box for the DataLab proxy client

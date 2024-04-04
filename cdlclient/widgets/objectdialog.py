@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Licensed under the terms of the BSD 3-Clause
-# (see cdl/LICENSE for details)
+# Copyright (c) DataLab Platform Developers, BSD 3-Clause license, see LICENSE file.
 
 """
 Object dialog
@@ -152,9 +149,7 @@ class SimpleObjectTree(QW.QTreeWidget):
             oid = item.data(0, QC.Qt.UserRole)
             self.SIG_ITEM_DOUBLECLICKED.emit(oid)
 
-    def contextMenuEvent(
-        self, event: QG.QContextMenuEvent
-    ) -> None:  # pylint: disable=C0103
+    def contextMenuEvent(self, event: QG.QContextMenuEvent) -> None:  # pylint: disable=C0103
         """Override Qt method"""
         self.SIG_CONTEXT_MENU.emit(event.globalPos())
 

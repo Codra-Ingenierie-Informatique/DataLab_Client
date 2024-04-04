@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# Copyright (c) DataLab Platform Developers, BSD 3-Clause license, see LICENSE file.
 
 """Module containing SVG icons for the application"""
 
