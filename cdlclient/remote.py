@@ -26,8 +26,8 @@ from xmlrpc.client import Binary, ServerProxy
 
 import guidata.dataset as gds
 import numpy as np
-from guidata.dataset.io import JSONReader, JSONWriter
 from guidata.env import execenv
+from guidata.io import JSONReader, JSONWriter
 from guidata.userconfig import get_config_basedir
 
 import cdlclient

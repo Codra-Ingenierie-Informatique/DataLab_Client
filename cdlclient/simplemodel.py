@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any
 
 import guidata.dataset as gds
-from guidata.dataset.io import JSONReader
+from guidata.io import JSONReader
 
 ROI_KEY = "_roi_"
 ANN_KEY = "_ann_"
