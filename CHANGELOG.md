@@ -1,5 +1,12 @@
 # DataLab Simple Client Releases #
 
+## Version 0.10.1 ##
+
+🛠️ Bug fixes:
+
+* Fixed `get_version` method in `SimpleRemoteProxy` to handle server versions
+  with a development suffix (e.g. `0.14.dev0`)
+
 ## Version 0.10.0 ##
 
 DataLab Simple Client is fully compatible with **DataLab 0.14.2** and above.

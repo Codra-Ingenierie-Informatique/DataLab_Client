@@ -14,7 +14,7 @@ application through XML-RPC protocol.
 from cdlclient.baseproxy import SimpleBaseProxy  # noqa: F401
 from cdlclient.remote import SimpleRemoteProxy  # noqa: F401
 
-__version__ = "0.11.0"
+__version__ = "0.10.1"
 __required_server_version__ = "0.14.2"
 __docurl__ = "https://cdlclient.readthedocs.io/en/latest/"
 __homeurl__ = "https://github.com/DataLab-Platform/DataLabSimpleClient/"
