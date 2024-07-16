@@ -414,16 +414,15 @@ class SimpleAbstractCDLControl(abc.ABC):
         """
 
     @abc.abstractmethod
-    def calc(self, name: str, param: gds.DataSet | None = None) -> gds.DataSet:
+    def calc(self, name: str, param: gds.DataSet | None = None) -> None:
         """Call compute function ``name`` in current panel's processor.
 
         Args:
-            name (str): Compute function name
-            param (guidata.dataset.DataSet | None): Compute function
-            parameter. Defaults to None.
+            name: Compute function name
+            param: Compute function parameter. Defaults to None.
 
-        Returns:
-            guidata.dataset.DataSet: Compute function result
+        Raises:
+            ValueError: unknown function
         """
 
     def __getattr__(self, name: str) -> Callable:
